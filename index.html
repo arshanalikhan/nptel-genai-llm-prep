@@ -73,7 +73,7 @@ try { var t0 = localStorage.getItem("genprep-theme"); if (t0 === "light" || t0 =
       <div class="hero-main">
         <p class="eyebrow">imb26_mg164 · IIM Bangalore · Prof. Naveen Kumar Bhansali · Jul–Oct 2026</p>
         <h1>Generative AI &amp; LLMs exam prep</h1>
-        <p class="lede">Notes for all 7 weeks, from word embeddings to RLHF and responsible AI, with a diagram per week, a numericals sheet, 40 must-know ideas and 171 original practice questions with explanations, plus timed 50-question mock papers.</p>
+        <p class="lede">Notes for all 7 weeks, from word embeddings to RLHF and responsible AI, with a diagram per week, a numericals sheet, 40 must-know ideas and all 40 questions from your own Jul–Oct 2026 assignments (weeks 1–4, NPTEL's answers) plus 171 original practice questions, plus timed 50-question mock papers.</p>
         <a class="today-focus" id="todayFocus" href="#plan" hidden></a>
         <div class="cta">
           <a class="btn primary big" id="cta-notes" href="#notes">Start week notes</a>
@@ -145,8 +145,8 @@ try { var t0 = localStorage.getItem("genprep-theme"); if (t0 === "light" || t0 =
       <a class="kitcard" href="#map"><span class="ic"><i data-lucide="map"></i></span><span class="k">1 poster</span><h3>Course map</h3><p>All 7 weeks on one picture, from words to responsible deployment.</p><span class="go">Open →</span></a>
       <a class="kitcard" href="#formulas"><span class="ic"><i data-lucide="calculator"></i></span><span class="k">6 formula cards · 10 worked examples</span><h3>Numericals</h3><p>TF-IDF, attention, softmax with temperature, LoRA parameters, GPU memory, BLEU/ROUGE.</p><span class="go">Open →</span></a>
       <a class="kitcard" href="#repeated"><span class="ic"><i data-lucide="star"></i></span><span class="k">40 questions</span><h3>Must-know</h3><p>The core idea of each topic, asked as an exam-style MCQ.</p><span class="go">Open →</span></a>
-      <a class="kitcard" href="#practice"><span class="ic"><i data-lucide="list-checks"></i></span><span class="k">171 questions</span><h3>Practice</h3><p>Concept, scenario and numerical questions by week, with explanations.</p><span class="go">Open →</span></a>
-      <a class="kitcard" href="#mock"><span class="ic"><i data-lucide="timer"></i></span><span class="k">4 papers · 50 questions each</span><h3>Mock exams</h3><p>3-hour papers in practice or exam mode, with a final score.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#practice"><span class="ic"><i data-lucide="list-checks"></i></span><span class="k">40 yours + 171 more</span><h3>Practice</h3><p>Your own assignment questions first, then the bank by week, with explanations.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#mock"><span class="ic"><i data-lucide="timer"></i></span><span class="k">5 papers · 50 questions each</span><h3>Mock exams</h3><p>3-hour papers in practice or exam mode, with a final score.</p><span class="go">Open →</span></a>
       <a class="kitcard" href="#traps"><span class="ic"><i data-lucide="triangle-alert"></i></span><span class="k">Read on exam morning</span><h3>Last-minute traps</h3><p>One-line statements that MCQ distractors love to flip.</p><span class="go">Open →</span></a>
       <a class="kitcard" href="#resources"><span class="ic"><i data-lucide="library"></i></span><span class="k">Course · papers · book</span><h3>Resources</h3><p>The course page, the textbook and the original papers behind each week.</p><span class="go">Open →</span></a>
     </div>
@@ -277,6 +277,7 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
           <li><b>GloVe</b> uses global co-occurrence counts; <b>FastText</b> uses character n-grams so it can build vectors for unseen words. These are <i>static</i>: "bank" has one vector for river and money. Contextual embeddings (ELMo, BERT) fix this.</li>
           <li><b>Similarity:</b> cosine similarity is the standard; analogies work by vector arithmetic.</li>
           <li><b>Classic models:</b> Naive Bayes and logistic regression on TF-IDF are strong baselines for text classification. Evaluate with accuracy, precision, recall, F1.</li>
+                  <li class="new"><span class="tag y">Your 2026</span>Your assignment asked: synonyms (happy/joyful) have the closest embeddings; a <i>high</i> TF-IDF means the word is distinctive, not common; pipeline order tokenize → POS → lemmatize → NER; text becomes numbers in pre-processing; sparse matrices save memory and compute.</li>
         </ul>
       </div>
     </article>
@@ -309,6 +310,7 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
           <li><b>Teacher forcing:</b> in training the decoder gets the true previous token rather than its own prediction (faster, but train/test mismatch called exposure bias).</li>
           <li><b>Decoding:</b> greedy picks the best token each step; <b>beam search</b> keeps the top-B partial sequences (B = 1 is greedy).</li>
           <li>RNNs process tokens one at a time, so training can't be parallelised across the sequence; transformers remove that limit.</li>
+                  <li class="new"><span class="tag y">Your 2026</span>Your assignment asked: BPTT, hidden state = memory, LSTM for long-term dependencies, encoder → context representation, beam search improves quality, BLEU vs reference translations, embeddings beat one-hot, vocabulary = set of unique tokens.</li>
         </ul>
       </div>
     </article>
@@ -340,7 +342,9 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
           <li><b>Cross-attention:</b> decoder queries attend to encoder keys and values.</li>
           <li><b>Multi-head:</b> different heads learn different relations (syntax, coreference). d_k = d_model / h.</li>
           <li><b>Cost:</b> self-attention is O(n²) in sequence length — the reason context windows are limited — but all positions are computed in parallel, unlike RNNs.</li>
+          <li><span class="tag y">Your 2026</span><b>ULMFiT</b> (Howard &amp; Ruder, 2018), transfer learning for text before transformers: (1) pre-train a general LM on Wikipedia, (2) <b>target-task LM fine-tuning</b> on domain text (uses discriminative learning rates and slanted triangular LR), (3) classifier fine-tuning with gradual unfreezing. <b>[CLS]</b> = whole-sequence token for classification, <b>[SEP]</b> = separator. <b>WordPiece</b> picks merges by likelihood; BPE by frequency.</li>
           <li><span class="tag">KEY</span><b>Three families:</b> encoder-only (BERT: masked LM, bidirectional, good for classification/NER), decoder-only (GPT: next-token prediction, generation), encoder–decoder (T5, BART: translation, summarization).</li>
+                  <li class="new"><span class="tag y">Your 2026</span>Your assignment asked: no recurrence → parallel; MLM uses both sides; [CLS] represents the whole sequence; WordPiece builds tokens by likelihood; GPT = autoregressive + causal mask; FFN adds non-linearity; cross-attention links encoder and decoder; ELMo is contextual. ULMFiT is the one you missed.</li>
         </ul>
       </div>
     </article>
@@ -376,6 +380,7 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
 <line x1="400" y1="190" x2="450" y2="208" class="a" marker-end="url(#g4m)"/><line x1="560" y1="190" x2="510" y2="208" class="a" marker-end="url(#g4m)"/>
 <text x="20" y="240" text-anchor="start" class="m">Stable Diffusion = latent diffusion + text encoder</text></svg></div><figcaption>A generative model learns the data distribution so it can sample new data. VAEs learn a smooth latent space, GANs learn by competition, diffusion models learn to undo noise step by step, and CLIP learns which captions match which images (contrastive), which is how text steers image generation.</figcaption></figure>
         <ul class="notes">
+          <li><span class="tag y">Your 2026</span><b>AI ⊃ ML ⊃ deep learning.</b> <b>Narrow AI (ANI)</b> does one task; <b>AGI</b> would generalise across domains. AI took off because of more data, more compute (GPUs) and better algorithms. <b>Representation learning</b> = the network learns useful features itself instead of hand-crafted ones.</li>
           <li><span class="tag">KEY</span><b>Discriminative vs generative:</b> discriminative models learn P(y | x) and draw boundaries (logistic regression, classifiers); generative models learn P(x) or P(x, y) and can create new samples.</li>
           <li><b>Types of GenAI output:</b> text (LLMs), images (DALL·E, Midjourney, Stable Diffusion), audio/music, video, code, synthetic data. Business uses: content, marketing copy, chatbots, summarising documents, code assistants, design.</li>
           <li><span class="tag">KEY</span><b>Autoencoder:</b> encoder compresses to a bottleneck (latent code), decoder reconstructs; trained on reconstruction loss; used for dimensionality reduction, denoising, anomaly detection. A plain autoencoder's latent space has gaps, so sampling from it gives poor images.</li>
@@ -384,6 +389,7 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
           <li><span class="tag">KEY</span><b>Diffusion models:</b> a fixed forward process adds Gaussian noise over many steps; a network (usually a U-Net) learns to predict and remove the noise. Sharp, diverse images and stable training, but slow sampling (many steps). <b>Latent diffusion</b> (Stable Diffusion) works in a compressed latent space for speed.</li>
           <li><span class="tag">KEY</span><b>CLIP</b> (OpenAI): trained contrastively on ~400M image–caption pairs to pull matching pairs together and push others apart; enables zero-shot image classification and guides text-to-image models.</li>
           <li><b>Evaluating images:</b> FID (lower is better) and Inception Score (higher is better).</li>
+                  <li class="new"><span class="tag y">Your 2026</span>Your assignment asked: why AI took off (data, compute, algorithms); AGI generalises across domains, ANI does one task; AI ⊃ ML ⊃ DL; generative models learn how data is generated; representation learning extracts features automatically; transformers scale with data and compute.</li>
         </ul>
       </div>
     </article>
@@ -530,7 +536,7 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
     <div class="sec-head">
       <p class="eyebrow">Practice bank</p>
       <h2>Questions by week</h2>
-      <p>Original questions written for this site from the course syllabus: definitions, scenarios and numericals, each with an explanation. Single-answer questions mark as soon as you pick. For "select all" questions, pick every option you think is right, then press Check. Your answers stay in this browser.</p>
+      <p>"My 2026 assignments" holds the 40 questions from your own weeks 1–4 assignments, reworded, with NPTEL's accepted answers (later weeks are added once their due date passes). "Practice bank" holds original questions written from the syllabus: definitions, scenarios and numericals, each with an explanation. Single-answer questions mark as soon as you pick. For "select all" questions, pick every option you think is right, then press Check. Your answers stay in this browser.</p>
     </div>
     <div class="toolbar">
       <div class="chips" id="chips" role="group" aria-label="Filter by week"></div>
@@ -554,7 +560,7 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
     <div class="sec-head">
       <p class="eyebrow">Full mock exams</p>
       <h2>Sit a full paper under exam conditions</h2>
-      <p>Each paper has 50 questions covering all 7 weeks, 2 marks each, on a 3-hour timer. Papers 1–3 share no questions. NPTEL doesn't publish this exam's exact pattern; confirm it on the instruction screen. The 40/100 line shown is the raw score that equals the 30/75 pass mark.</p>
+      <p>Each paper has 50 questions covering all 7 weeks, 2 marks each, on a 3-hour timer. "Your paper" uses all 40 of your own questions plus 10 from weeks 5–7. Papers 1–3 come from the practice bank and share no questions. NPTEL doesn't publish this exam's exact pattern; confirm it on the instruction screen. The 40/100 line shown is the raw score that equals the 30/75 pass mark.</p>
       <p><b>Practice mode</b> marks each answer right or wrong as you go and has a <b>Reveal answer</b> button (a revealed question counts as wrong). <b>Exam mode</b> works like the real exam: no answers until you finish.</p>
     </div>
     <div id="mockroot"></div>
@@ -665,8 +671,8 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
 <script>window.ccIcons = function () { try { if (window.lucide) window.lucide.createIcons({ attrs: { "aria-hidden": "true" } }); } catch (e) {} };</script>
 <script async src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js" onload="ccIcons()"></script>
 <script async src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script src="assets/js/questions.js?v=f0fee55230"></script>
+<script src="assets/js/questions.js?v=1fd85193ee"></script>
 <script src="assets/js/repeated.js?v=b3e5ea3e6a"></script>
-<script src="assets/js/app.js?v=2ca2f67c96"></script>
+<script src="assets/js/app.js?v=40856bc7ec"></script>
 </body>
 </html>

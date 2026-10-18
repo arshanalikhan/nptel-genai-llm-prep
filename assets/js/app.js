@@ -3,8 +3,8 @@ const KEY = "genprep-v1";
 const LET = "ABCDEF";
 let store = {};
 try { store = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { store = {}; }
-let filter = "all";
-try { filter = localStorage.getItem(KEY + "-f") || "all"; } catch (e) {}
+let filter = "mine";
+try { filter = localStorage.getItem(KEY + "-f") || "mine"; } catch (e) {}
 let reveal = false;
 let order = QS.map((_, i) => i);
 
@@ -22,7 +22,9 @@ function visible() { return order.filter(inSet); }
 function buildChips() {
   const box = document.getElementById("chips");
   const defs = [
-        ["all", "All", QS.length],
+    ["mine", "My 2026 assignments", QS.filter(q => q[6] === "y").length],
+    ["past", "Practice bank", QS.filter(q => q[6] !== "y").length],
+    ["all", "All", QS.length],
     ["num", "Numericals", QS.filter(q => q[5] === "num").length]
   ];
   for (let w = 1; w <= 7; w++) defs.push([String(w), w === 0 ? "W0 prereq" : "W" + w, QS.filter(q => q[0] === w).length]);
@@ -342,6 +344,7 @@ renderRep();
 
 /* ---------- Mock exams ---------- */
 const PAPERS = [
+  { id: "mine", name: "Your paper", src: "Your Jul–Oct 2026 assignments", note: "all 40 of yours (W1–W4) + 10 from W5–W7" },
   { id: "p1", name: "Paper 1", src: "Set A", note: "7 per week + 1" },
   { id: "p2", name: "Paper 2", src: "Set B", note: "No overlap with set A" },
   { id: "p3", name: "Paper 3", src: "Set C", note: "No overlap with sets A or B" },
@@ -366,7 +369,13 @@ function shuf(arr, r) { const a = arr.slice(); for (let i = a.length - 1; i > 0;
 
 function buildPaper(id) {
   const rand = id === "rand";
-  const pool = QS.map((_, i) => i);
+  if (id === "mine") {
+    const r0 = rng(11), bank = QS.map((_, i) => i).filter(i => QS[i][6] !== "y");
+    const ids = QS.map((_, i) => i).filter(i => QS[i][6] === "y");
+    [[5, 4], [6, 3], [7, 3]].forEach(([w, n]) => { ids.push(...shuf(bank.filter(i => QS[i][0] === w), r0).slice(0, n)); });
+    return shuf(ids, rng(12));
+  }
+  const pool = QS.map((_, i) => i).filter(i => rand || QS[i][6] !== "y");
   const slot = { p1: 0, p2: 1, p3: 2, rand: 0 }[id];
   const seed = rand ? (Date.now() & 0x7fffffff) : 7;
   const r = rng(seed);
