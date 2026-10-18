@@ -660,7 +660,7 @@ setInterval(() => {
 renderMock();
 
 /* ---------- Pages & routing ---------- */
-const PAGE_ORDER = ["home", "notes", "map", "formulas", "repeated", "practice", "mock", "traps", "resources"];
+const PAGE_ORDER = ["home", "notes", "videos", "map", "formulas", "repeated", "practice", "mock", "traps", "resources"];
 const PAGE_NAMES = { home: "Home", notes: "Week notes", videos: "Videos", map: "Course map", formulas: "Numericals", repeated: "Must-know", practice: "Practice", mock: "Mock exams", traps: "Last-minute traps", resources: "Videos & sources" };
 const ALIAS = { plan: ["home", "plan"], lectures: ["resources", "videos-block"], sources: ["resources", "sources-block"], poster: ["map", null] };
 const WEEKS_KEY = KEY + "-weeks", CURWEEK_KEY = KEY + "-curweek";
@@ -901,7 +901,15 @@ function route(hIn) {
 updateCountdowns();
 /* ---------- Videos ---------- */
 // One entry per week; set src/poster/dur when a week's video is published.
-const VIDEO_LIST = [];
+const VIDEO_LIST = [
+  { w: 1, title: "Natural Language Processing", src: "videos/week-01.mp4", poster: "videos/week-01.jpg", dur: "3:29" },
+  { w: 2, title: "Sequential data, RNNs & encoder–decoder", src: "videos/week-02.mp4", poster: "videos/week-02.jpg", dur: "2:31" },
+  { w: 3, title: "Attention & transformers", src: "videos/week-03.mp4", poster: "videos/week-03.jpg", dur: "2:32" },
+  { w: 4, title: "Introduction to Generative AI", src: "videos/week-04.mp4", poster: "videos/week-04.jpg", dur: "2:33" },
+  { w: 5, title: "Large Language Models", src: "videos/week-05.mp4", poster: "videos/week-05.jpg", dur: "2:21" },
+  { w: 6, title: "Generative AI project lifecycle", src: "videos/week-06.mp4", poster: "videos/week-06.jpg", dur: "3:05" },
+  { w: 7, title: "Responsible AI", src: "videos/week-07.mp4", poster: "videos/week-07.jpg", dur: "2:03" }
+];
 const VSPEED_KEY = KEY + "-vspeed";
 let vspeed = loadJSON(VSPEED_KEY, 1);
 function allVideos() { return [...document.querySelectorAll("#vgrid video")]; }
@@ -941,7 +949,7 @@ function renderVideos() {
     grid.appendChild(c);
   });
   const n = VIDEO_LIST.filter(x => x.src).length;
-  document.getElementById("vcount").textContent = n + " of 12 weeks published";
+  document.getElementById("vcount").textContent = n + " of 7 weeks published";
   paintSpeed();
   window.ccIcons && window.ccIcons();
 }

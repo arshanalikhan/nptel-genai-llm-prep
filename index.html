@@ -25,6 +25,7 @@ try { var t0 = localStorage.getItem("genprep-theme"); if (t0 === "light" || t0 =
   <nav class="side-nav">
       <a href="#home" data-page="home"><i data-lucide="layout-dashboard"></i><span>Home</span></a>
       <a href="#notes" data-page="notes"><i data-lucide="book-open"></i><span>Week notes</span></a>
+      <a href="#videos" data-page="videos"><i data-lucide="circle-play"></i><span>Videos</span></a>
       <a href="#map" data-page="map"><i data-lucide="map"></i><span>Course map</span></a>
       <a href="#formulas" data-page="formulas"><i data-lucide="calculator"></i><span>Numericals</span></a>
       <a href="#repeated" data-page="repeated"><i data-lucide="star"></i><span>Must-know</span></a>
@@ -48,6 +49,7 @@ try { var t0 = localStorage.getItem("genprep-theme"); if (t0 === "light" || t0 =
 <nav class="bottombar" aria-label="Pages">
   <a href="#home" data-page="home"><i data-lucide="layout-dashboard"></i><span>Home</span></a>
   <a href="#notes" data-page="notes"><i data-lucide="book-open"></i><span>Notes</span></a>
+  <a href="#videos" data-page="videos"><i data-lucide="circle-play"></i><span>Videos</span></a>
   <a href="#practice" data-page="practice"><i data-lucide="list-checks"></i><span>Practice</span></a>
   <a href="#mock" data-page="mock"><i data-lucide="timer"></i><span>Mock</span></a>
   <button type="button" id="moreBtn" aria-expanded="false" aria-controls="moreSheet"><i data-lucide="ellipsis"></i><span>More</span></button>
@@ -139,6 +141,7 @@ try { var t0 = localStorage.getItem("genprep-theme"); if (t0 === "light" || t0 =
     <div class="sec-head"><p class="eyebrow">Everything in this kit</p><h2>Pick a page</h2></div>
     <div class="kit">
       <a class="kitcard" href="#notes"><span class="ic"><i data-lucide="book-open"></i></span><span class="k">7 weeks · 7 diagrams</span><h3>Week notes</h3><p>One week at a time, each opening with a diagram of how it works.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#videos"><span class="ic"><i data-lucide="circle-play"></i></span><span class="k">7 weeks · Hinglish</span><h3>Videos</h3><p>Short narrated explainers for each week, with captions.</p><span class="go">Open →</span></a>
       <a class="kitcard" href="#map"><span class="ic"><i data-lucide="map"></i></span><span class="k">1 poster</span><h3>Course map</h3><p>All 7 weeks on one picture, from words to responsible deployment.</p><span class="go">Open →</span></a>
       <a class="kitcard" href="#formulas"><span class="ic"><i data-lucide="calculator"></i></span><span class="k">6 formula cards · 10 worked examples</span><h3>Numericals</h3><p>TF-IDF, attention, softmax with temperature, LoRA parameters, GPU memory, BLEU/ROUGE.</p><span class="go">Open →</span></a>
       <a class="kitcard" href="#repeated"><span class="ic"><i data-lucide="star"></i></span><span class="k">40 questions</span><h3>Must-know</h3><p>The core idea of each topic, asked as an exam-style MCQ.</p><span class="go">Open →</span></a>
@@ -475,7 +478,15 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
 </section>
 
 <section id="videos" class="page" hidden>
-  <div class="wrap"><div class="vbar"><div class="chips" id="vspeed"></div><span class="score" id="vcount"></span></div><div class="vgrid" id="vgrid"></div></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Videos</p>
+      <h2>Week-by-week explainers in Hinglish</h2>
+      <p>Short narrated videos, one per week, covering what is most likely to be asked, with Hinglish captions on screen. Speed them up if you're short on time.</p>
+    </div>
+    <div class="vbar"><span class="score">Playback speed</span><div class="chips" id="vspeed" role="group" aria-label="Playback speed"></div><span class="score" id="vcount"></span></div>
+    <div class="vgrid" id="vgrid"></div>
+  </div>
 </section>
 
 <section id="map" class="page" hidden>
@@ -656,6 +667,6 @@ total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 
 <script async src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="assets/js/questions.js?v=f0fee55230"></script>
 <script src="assets/js/repeated.js?v=b3e5ea3e6a"></script>
-<script src="assets/js/app.js?v=f1237aef3a"></script>
+<script src="assets/js/app.js?v=2ca2f67c96"></script>
 </body>
 </html>
