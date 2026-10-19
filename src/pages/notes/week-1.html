@@ -1,0 +1,26 @@
+    <article class="week" id="w1">
+      <div class="rail"><span class="num">01</span><span class="lecs">NLP</span></div>
+      <div class="body">
+        <h3>Natural Language Processing</h3>
+        <figure class="diag"><p class="hint">Swipe sideways to see the whole diagram →</p><div class="scroll"><svg class="dg" viewBox="0 0 640 200" role="img" aria-label="NLP pipeline: raw text, cleaning and tokenization, normalisation, vectorisation, model."><defs><marker id="g1m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<rect x="10" y="40" width="110" height="60" rx="8" class="b"/><text x="65" y="66" text-anchor="middle" class="t">Raw text</text><text x="65" y="84" text-anchor="middle" class="s">"Cats are running!"</text>
+<rect x="140" y="40" width="110" height="60" rx="8" class="b"/><text x="195" y="66" text-anchor="middle" class="t">Tokenize</text><text x="195" y="84" text-anchor="middle" class="s">[cats, are, running]</text>
+<rect x="270" y="40" width="110" height="60" rx="8" class="b"/><text x="325" y="66" text-anchor="middle" class="t">Normalise</text><text x="325" y="84" text-anchor="middle" class="s">stopwords · lemma</text>
+<rect x="400" y="40" width="110" height="60" rx="8" class="h"/><text x="455" y="66" text-anchor="middle" class="t">Vectorise</text><text x="455" y="84" text-anchor="middle" class="s">BoW · TF-IDF · embed</text>
+<rect x="530" y="40" width="100" height="60" rx="8" class="b"/><text x="580" y="66" text-anchor="middle" class="t">Model</text><text x="580" y="84" text-anchor="middle" class="s">classify · NER</text>
+<line x1="120" y1="70" x2="138" y2="70" class="a" marker-end="url(#g1m)"/><line x1="250" y1="70" x2="268" y2="70" class="a" marker-end="url(#g1m)"/><line x1="380" y1="70" x2="398" y2="70" class="a" marker-end="url(#g1m)"/><line x1="510" y1="70" x2="528" y2="70" class="a" marker-end="url(#g1m)"/>
+<text x="455" y="135" text-anchor="middle" class="m">sparse: one-hot, BoW, TF-IDF (length = vocabulary)</text><text x="455" y="155" text-anchor="middle" class="m">dense: Word2Vec, GloVe, FastText (length d ≈ 100–300)</text><text x="455" y="180" text-anchor="middle" class="s">king − man + woman ≈ queen</text></svg></div><figcaption>Text has to become numbers before a model can use it. Sparse vectors count words and lose order and meaning; dense embeddings place similar words close together, so cosine similarity captures meaning.</figcaption></figure>
+        <ul class="notes">
+          <li><span class="tag">KEY</span><b>NLP tasks:</b> classification (sentiment, spam), named entity recognition, POS tagging, machine translation, summarization, question answering, text generation. NLU = understanding; NLG = generation.</li>
+          <li><span class="tag">KEY</span><b>Preprocessing:</b> tokenization (split into tokens), lowercasing, stop-word removal, <b>stemming</b> (crude suffix chopping, "studies" → "studi", may not be a word) vs <b>lemmatization</b> (dictionary form using vocabulary + POS, "better" → "good").</li>
+          <li><b>Tokenization levels:</b> word, character, subword. Subword methods (BPE, WordPiece, SentencePiece) handle rare and unseen words by splitting them into known pieces, so there is no out-of-vocabulary problem.</li>
+          <li><span class="tag">KEY</span><b>Bag of words:</b> word counts, ignores order and grammar. <b>n-grams</b> keep some local order (bigram = 2 words). <b>TF-IDF</b> down-weights words common across documents; a word in every document scores 0.</li>
+          <li><b>One-hot:</b> length = vocabulary size, every pair of words is equally distant (orthogonal), so no similarity information; very sparse.</li>
+          <li><span class="tag">KEY</span><b>Word embeddings:</b> dense vectors learned from context ("you shall know a word by the company it keeps" — distributional hypothesis). <b>Word2Vec</b>: CBOW predicts the word from its context (faster, good for frequent words); <b>Skip-gram</b> predicts the context from the word (better for rare words). Negative sampling speeds training.</li>
+          <li><b>GloVe</b> uses global co-occurrence counts; <b>FastText</b> uses character n-grams so it can build vectors for unseen words. These are <i>static</i>: "bank" has one vector for river and money. Contextual embeddings (ELMo, BERT) fix this.</li>
+          <li><b>Similarity:</b> cosine similarity is the standard; analogies work by vector arithmetic.</li>
+          <li><b>Classic models:</b> Naive Bayes and logistic regression on TF-IDF are strong baselines for text classification. Evaluate with accuracy, precision, recall, F1.</li>
+                  <li class="new"><span class="tag y">Your 2026</span>Your assignment asked: synonyms (happy/joyful) have the closest embeddings; a <i>high</i> TF-IDF means the word is distinctive, not common; pipeline order tokenize → POS → lemmatize → NER; text becomes numbers in pre-processing; sparse matrices save memory and compute.</li>
+        </ul>
+      </div>
+    </article>

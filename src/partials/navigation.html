@@ -1,0 +1,46 @@
+<button class="totop" id="totop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<aside class="sidebar" aria-label="Pages">
+  <a class="brand" href="#home" aria-label="Home"><!-- include: partials/logo.svg --><span>GenAI Prep<small>NPTEL · imb26_mg164</small></span></a>
+  <nav class="side-nav">
+      <a href="#home" data-page="home"><i data-lucide="layout-dashboard"></i><span>Home</span></a>
+      <a href="#notes" data-page="notes"><i data-lucide="book-open"></i><span>Week notes</span></a>
+      <a href="#videos" data-page="videos"><i data-lucide="circle-play"></i><span>Videos</span></a>
+      <a href="#map" data-page="map"><i data-lucide="map"></i><span>Course map</span></a>
+      <a href="#formulas" data-page="formulas"><i data-lucide="calculator"></i><span>Numericals</span></a>
+      <a href="#repeated" data-page="repeated"><i data-lucide="star"></i><span>Must-know</span></a>
+      <a href="#practice" data-page="practice"><i data-lucide="list-checks"></i><span>Practice</span></a>
+      <a href="#mock" data-page="mock"><i data-lucide="timer"></i><span>Mock exams</span></a>
+      <a href="#traps" data-page="traps"><i data-lucide="triangle-alert"></i><span>Traps</span></a>
+      <a href="#resources" data-page="resources"><i data-lucide="library"></i><span>Resources</span></a>
+  </nav>
+  <div class="side-foot">
+    <div class="side-count"><b id="sidecd">54</b><span id="sidecdl">days to the exam</span></div>
+    <button class="themebtn" type="button" aria-label="Switch color theme"></button>
+  </div>
+</aside>
+
+<header class="topbar">
+  <a class="brand" href="#home" aria-label="Home"><!-- include: partials/logo.svg --></a>
+  <p class="topbar-title" id="topTitle">Home</p>
+  <button class="themebtn" type="button" aria-label="Switch color theme"></button>
+</header>
+
+<nav class="bottombar" aria-label="Pages">
+  <a href="#home" data-page="home"><i data-lucide="layout-dashboard"></i><span>Home</span></a>
+  <a href="#notes" data-page="notes"><i data-lucide="book-open"></i><span>Notes</span></a>
+  <a href="#videos" data-page="videos"><i data-lucide="circle-play"></i><span>Videos</span></a>
+  <a href="#practice" data-page="practice"><i data-lucide="list-checks"></i><span>Practice</span></a>
+  <a href="#mock" data-page="mock"><i data-lucide="timer"></i><span>Mock</span></a>
+  <button type="button" id="moreBtn" aria-expanded="false" aria-controls="moreSheet"><i data-lucide="ellipsis"></i><span>More</span></button>
+</nav>
+<div class="sheet" id="moreSheet" hidden>
+  <div class="sheet-panel" role="dialog" aria-label="More pages">
+    <span class="sheet-grip" aria-hidden="true"></span>
+      <a href="#map" data-page="map"><i data-lucide="map"></i><span><b>Course map</b><small>All 7 weeks on one picture</small></span></a>
+      <a href="#formulas" data-page="formulas"><i data-lucide="calculator"></i><span><b>Numericals</b><small>Formulas + worked examples</small></span></a>
+      <a href="#repeated" data-page="repeated"><i data-lucide="star"></i><span><b>Must-know</b><small>{{must_know_count}} core ideas as MCQs</small></span></a>
+      <a href="#traps" data-page="traps"><i data-lucide="triangle-alert"></i><span><b>Traps</b><small>Read on exam morning</small></span></a>
+      <a href="#resources" data-page="resources"><i data-lucide="library"></i><span><b>Resources</b><small>Course, papers, readings</small></span></a>
+  </div>
+</div>

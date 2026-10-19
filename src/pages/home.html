@@ -1,0 +1,86 @@
+<section id="home" class="page">
+  <div class="wrap">
+    <div class="hero">
+      <canvas class="hero-net" aria-hidden="true"></canvas>
+      <div class="hero-main">
+        <p class="eyebrow">imb26_mg164 · IIM Bangalore · Prof. Naveen Kumar Bhansali · Jul–Oct 2026</p>
+        <h1>Generative AI &amp; LLMs exam prep</h1>
+        <p class="lede">Notes for all 7 weeks, from word embeddings to RLHF and responsible AI, with a diagram per week, a numericals sheet, {{must_know_count}} must-know ideas and all {{mine_count}} questions from your own Jul–Oct 2026 assignments (weeks {{mine_weeks}}, NPTEL's answers) plus {{bank_count}} original practice questions, plus timed 50-question mock papers.</p>
+        <a class="today-focus" id="todayFocus" href="#plan" hidden></a>
+        <div class="cta">
+          <a class="btn primary big" id="cta-notes" href="#notes">Start week notes</a>
+          <a class="btn big" href="#mock">Take a mock paper</a>
+          <a class="btn big" href="#repeated">Must-know ideas</a>
+        </div>
+      </div>
+      <div class="countdown-card" aria-live="polite"><span class="cd-num" id="cdnum">54</span><span class="cd-l" id="cdlabel">days to the exam</span><span class="cd-d">Fri 11 Dec 2026</span></div>
+    </div>
+    <dl class="ticket">
+      <div><dt>Exam</dt><dd>Fri 11 Dec 2026 <small id="countdown">54 days to go</small></dd></div>
+      <div><dt>Registration</dt><dd>Closes 31 Oct 2026 <small>₹750 fee · exam date may change, check the hall ticket</small></dd></div>
+      <div><dt>Score</dt><dd>25% assignments + 75% exam <small>Best 3 of 7 assignments count</small></dd></div>
+      <div><dt>To pass</dt><dd>Exam ≥ 30/75 <small>Plus assignments ≥ 10/25 · Gold ≥ 90, Silver 76–89, Bronze 61–75</small></dd></div>
+    </dl>
+    <div class="sec-head"><p class="eyebrow">Your progress</p><h2>Where you stand</h2><p>Counted from your answers in this browser. Tap a card to continue.</p></div>
+    <div class="stats" id="stats"></div>
+
+    <div class="sec-head" id="plan">
+      <p class="eyebrow">Start here</p>
+      <h2>A plan to the exam</h2>
+      <p>The course runs 7 weeks of content: NLP basics, RNNs, attention and transformers, then generative models, LLMs, the generative AI project lifecycle (prompting, fine-tuning, PEFT, RLHF, RAG, LangChain, deployment) and responsible AI. Questions here are written fresh for this site from the official syllabus; NPTEL does not publish past proctored papers for this course.</p>
+    </div>
+    <p class="callout"><b>Where the marks are.</b> Weeks 3, 5 and 6 carry the most testable detail: scaled dot-product attention, decoding settings (temperature, top-k, top-p), prompting styles, LoRA and other PEFT methods, the RLHF pipeline, RAG and evaluation metrics. Learn the formulas on the Numericals page; they turn into easy 2-mark questions.</p>
+    <div class="days">
+      <div class="day">
+        <p class="when">19 Oct – 8 Nov · Phase 1</p>
+        <h3>Weeks 1–3: foundations</h3>
+        <ul>
+          <li>Notes for weeks 1–3; redraw the attention diagram from memory</li>
+          <li>TF-IDF, cosine similarity, softmax and attention numericals</li>
+          <li>Practice W1–W3 until you score 80%+</li>
+        </ul>
+      </div>
+      <div class="day">
+        <p class="when">9 Nov – 22 Nov · Phase 2</p>
+        <h3>Weeks 4–5: generative models &amp; LLMs</h3>
+        <ul>
+          <li>Autoencoders, VAEs, GANs, diffusion, CLIP: one line each on how they train</li>
+          <li>Decoding and prompting; BERT vs GPT vs T5</li>
+          <li>Practice W4–W5, then all 40 must-know questions</li>
+        </ul>
+      </div>
+      <div class="day">
+        <p class="when">23 Nov – 6 Dec · Phase 3</p>
+        <h3>Weeks 6–7 + first mocks</h3>
+        <ul>
+          <li>Lifecycle, fine-tuning, PEFT/LoRA maths, RLHF, RAG, LangChain, deployment</li>
+          <li>Responsible AI: bias, hallucination, privacy, IP, guardrails</li>
+          <li>Sit mock Paper 1 in exam mode; review every miss</li>
+        </ul>
+      </div>
+      <div class="day">
+        <p class="when">7 Dec – 11 Dec · Final days</p>
+        <h3>Mocks and light review</h3>
+        <ul>
+          <li>Papers 2 and 3, then a random paper</li>
+          <li>Traps list + formula sheet the night before</li>
+          <li>Hall ticket + original photo ID on exam day</li>
+          <li>For "select all" questions, judge each option on its own</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-head"><p class="eyebrow">Everything in this kit</p><h2>Pick a page</h2></div>
+    <div class="kit">
+      <a class="kitcard" href="#notes"><span class="ic"><i data-lucide="book-open"></i></span><span class="k">7 weeks · 7 diagrams</span><h3>Week notes</h3><p>One week at a time, each opening with a diagram of how it works.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#videos"><span class="ic"><i data-lucide="circle-play"></i></span><span class="k">7 weeks · Hinglish</span><h3>Videos</h3><p>Short narrated explainers for each week, with captions.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#map"><span class="ic"><i data-lucide="map"></i></span><span class="k">1 poster</span><h3>Course map</h3><p>All 7 weeks on one picture, from words to responsible deployment.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#formulas"><span class="ic"><i data-lucide="calculator"></i></span><span class="k">6 formula cards · 10 worked examples</span><h3>Numericals</h3><p>TF-IDF, attention, softmax with temperature, LoRA parameters, GPU memory, BLEU/ROUGE.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#repeated"><span class="ic"><i data-lucide="star"></i></span><span class="k">{{must_know_count}} questions</span><h3>Must-know</h3><p>The core idea of each topic, asked as an exam-style MCQ.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#practice"><span class="ic"><i data-lucide="list-checks"></i></span><span class="k">{{mine_count}} yours + {{bank_count}} more</span><h3>Practice</h3><p>Your own assignment questions first, then the bank by week, with explanations.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#mock"><span class="ic"><i data-lucide="timer"></i></span><span class="k">5 papers · 50 questions each</span><h3>Mock exams</h3><p>3-hour papers in practice or exam mode, with a final score.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#traps"><span class="ic"><i data-lucide="triangle-alert"></i></span><span class="k">Read on exam morning</span><h3>Last-minute traps</h3><p>One-line statements that MCQ distractors love to flip.</p><span class="go">Open →</span></a>
+      <a class="kitcard" href="#resources"><span class="ic"><i data-lucide="library"></i></span><span class="k">Course · papers · book</span><h3>Resources</h3><p>The course page, the textbook and the original papers behind each week.</p><span class="go">Open →</span></a>
+    </div>
+  </div>
+</section>

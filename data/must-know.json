@@ -1,0 +1,482 @@
+[
+  {
+    "week": 1,
+    "question": "Mapping \"running\", \"ran\" and \"runs\" to the dictionary form \"run\" is:",
+    "options": [
+      "Stemming",
+      "Lemmatization",
+      "Tokenization",
+      "Vectorisation"
+    ],
+    "answer": [1],
+    "idea": "Lemmatization uses vocabulary + POS for a real word; stemming chops suffixes."
+  },
+  {
+    "week": 1,
+    "question": "A word that appears in every document gets a TF-IDF of:",
+    "options": [
+      "1",
+      "0",
+      "Its count",
+      "log N"
+    ],
+    "answer": [1],
+    "idea": "IDF = log(N/N) = 0."
+  },
+  {
+    "week": 1,
+    "question": "Skip-gram predicts:",
+    "options": [
+      "The centre word from context",
+      "Context words from the centre word",
+      "The document class",
+      "The next sentence"
+    ],
+    "answer": [1],
+    "idea": "CBOW is the reverse; skip-gram suits rare words."
+  },
+  {
+    "week": 1,
+    "question": "Which embeddings are contextual (different vectors for the same word in different sentences)?",
+    "options": [
+      "Word2Vec",
+      "GloVe",
+      "BERT",
+      "One-hot"
+    ],
+    "answer": [2],
+    "idea": "Static: Word2Vec, GloVe, FastText. Contextual: ELMo, BERT, GPT."
+  },
+  {
+    "week": 1,
+    "question": "The standard similarity measure between word embeddings is:",
+    "options": [
+      "Euclidean sum",
+      "Cosine similarity",
+      "Jaccard on characters",
+      "Edit distance"
+    ],
+    "answer": [1],
+    "idea": "cos = a·b / (‖a‖‖b‖), ignores vector length."
+  },
+  {
+    "week": 2,
+    "question": "The main problem LSTMs were designed to fix is:",
+    "options": [
+      "Slow tokenization",
+      "Vanishing gradients over long sequences",
+      "Mode collapse",
+      "Large vocabularies"
+    ],
+    "answer": [1],
+    "idea": "Gated, additive cell state keeps gradients alive."
+  },
+  {
+    "week": 2,
+    "question": "Which has fewer gates and parameters?",
+    "options": [
+      "LSTM",
+      "GRU",
+      "Both equal",
+      "Neither has gates"
+    ],
+    "answer": [1],
+    "idea": "GRU: update + reset; LSTM: forget, input, output + cell."
+  },
+  {
+    "week": 2,
+    "question": "The basic seq2seq model's bottleneck is:",
+    "options": [
+      "The tokenizer",
+      "A single fixed-length context vector",
+      "The loss function",
+      "The output vocabulary"
+    ],
+    "answer": [1],
+    "idea": "Attention removed it."
+  },
+  {
+    "week": 2,
+    "question": "Feeding the ground-truth previous token to the decoder during training is:",
+    "options": [
+      "Beam search",
+      "Teacher forcing",
+      "Dropout",
+      "Clipping"
+    ],
+    "answer": [1],
+    "idea": "Train/test mismatch = exposure bias."
+  },
+  {
+    "week": 2,
+    "question": "Exploding gradients are controlled with:",
+    "options": [
+      "Gradient clipping",
+      "More layers",
+      "Higher learning rate",
+      "Stop words"
+    ],
+    "answer": [0],
+    "idea": "Rescale gradients above a norm threshold."
+  },
+  {
+    "week": 3,
+    "question": "Scaled dot-product attention:",
+    "options": [
+      "softmax(QKᵀ/√d_k)V",
+      "softmax(QV/√d_k)K",
+      "QKᵀ/d_k",
+      "tanh(QK)V"
+    ],
+    "answer": [0],
+    "idea": "Scaling by √d_k keeps softmax gradients healthy."
+  },
+  {
+    "week": 3,
+    "question": "Transformers need positional encodings because:",
+    "options": [
+      "Attention is order-blind",
+      "They have RNN layers",
+      "To save memory",
+      "To mask tokens"
+    ],
+    "answer": [0],
+    "idea": "Position info is added to embeddings."
+  },
+  {
+    "week": 3,
+    "question": "d_model = 768, 12 heads. d_k =",
+    "options": [
+      "12",
+      "64",
+      "768",
+      "9,216"
+    ],
+    "answer": [1],
+    "idea": "768 / 12 = 64."
+  },
+  {
+    "week": 3,
+    "question": "Self-attention cost in sequence length n is:",
+    "options": [
+      "O(n)",
+      "O(n²)",
+      "O(log n)",
+      "O(n³)"
+    ],
+    "answer": [1],
+    "idea": "Every token attends to every other — why context windows are capped."
+  },
+  {
+    "week": 3,
+    "question": "Match: BERT / GPT / T5",
+    "options": [
+      "Encoder / decoder / encoder–decoder",
+      "Decoder / encoder / encoder–decoder",
+      "Encoder–decoder / decoder / encoder",
+      "All decoders"
+    ],
+    "answer": [0],
+    "idea": "Understanding / generation / text-to-text."
+  },
+  {
+    "week": 3,
+    "question": "Decoder self-attention is masked to:",
+    "options": [
+      "Hide future tokens",
+      "Hide the encoder",
+      "Drop heads",
+      "Save memory"
+    ],
+    "answer": [0],
+    "idea": "Keeps generation autoregressive."
+  },
+  {
+    "week": 4,
+    "question": "Generative models learn:",
+    "options": [
+      "P(y|x) only",
+      "The data distribution P(x) (or P(x,y))",
+      "Decision boundaries only",
+      "Nothing"
+    ],
+    "answer": [1],
+    "idea": "So they can sample new data."
+  },
+  {
+    "week": 4,
+    "question": "VAE loss =",
+    "options": [
+      "Reconstruction + KL divergence",
+      "Adversarial only",
+      "BLEU + ROUGE",
+      "Cross-entropy only"
+    ],
+    "answer": [0],
+    "idea": "KL makes the latent space smooth and sampleable."
+  },
+  {
+    "week": 4,
+    "question": "GAN generator producing very little variety is:",
+    "options": [
+      "Mode collapse",
+      "Overfitting",
+      "Hallucination",
+      "Catastrophic forgetting"
+    ],
+    "answer": [0],
+    "idea": "Common GAN failure."
+  },
+  {
+    "week": 4,
+    "question": "Diffusion models learn to:",
+    "options": [
+      "Add noise",
+      "Remove noise step by step",
+      "Classify images",
+      "Translate text"
+    ],
+    "answer": [1],
+    "idea": "Forward noising is fixed; reverse denoising is learned."
+  },
+  {
+    "week": 4,
+    "question": "CLIP learns by:",
+    "options": [
+      "Contrastive image–caption matching",
+      "Masked LM",
+      "Pixel reconstruction",
+      "RLHF"
+    ],
+    "answer": [0],
+    "idea": "Enables zero-shot classification and text guidance."
+  },
+  {
+    "week": 4,
+    "question": "Stable Diffusion is fast relative to pixel diffusion because it:",
+    "options": [
+      "Uses a GAN",
+      "Works in a compressed latent space",
+      "Skips denoising",
+      "Uses RNNs"
+    ],
+    "answer": [1],
+    "idea": "Latent diffusion."
+  },
+  {
+    "week": 5,
+    "question": "Few-shot prompting:",
+    "options": [
+      "Updates weights",
+      "Puts examples in the prompt, no weight change",
+      "Needs RLHF",
+      "Is pre-training"
+    ],
+    "answer": [1],
+    "idea": "In-context learning."
+  },
+  {
+    "week": 5,
+    "question": "Raising temperature makes outputs:",
+    "options": [
+      "More deterministic",
+      "More random/diverse",
+      "Shorter",
+      "Factual"
+    ],
+    "answer": [1],
+    "idea": "T → 0 approaches greedy."
+  },
+  {
+    "week": 5,
+    "question": "Top-p = 0.9 keeps:",
+    "options": [
+      "9 tokens",
+      "The smallest set with cumulative probability ≥ 0.9",
+      "90% of the vocabulary",
+      "One token"
+    ],
+    "answer": [1],
+    "idea": "Top-k keeps a fixed number instead."
+  },
+  {
+    "week": 5,
+    "question": "\"Let's think step by step\" is:",
+    "options": [
+      "Chain-of-thought prompting",
+      "Soft prompting",
+      "Distillation",
+      "RAG"
+    ],
+    "answer": [0],
+    "idea": "Elicits intermediate reasoning."
+  },
+  {
+    "week": 5,
+    "question": "Lower perplexity means:",
+    "options": [
+      "Better language model",
+      "Worse language model",
+      "Higher temperature",
+      "Bigger vocabulary"
+    ],
+    "answer": [0],
+    "idea": "Less surprised by real text."
+  },
+  {
+    "week": 5,
+    "question": "GPT-style pre-training objective:",
+    "options": [
+      "Masked LM",
+      "Next-token prediction",
+      "Contrastive",
+      "Reward modelling"
+    ],
+    "answer": [1],
+    "idea": "Causal language modelling."
+  },
+  {
+    "week": 6,
+    "question": "LoRA trainable parameters for a d × k matrix at rank r:",
+    "options": [
+      "d·k",
+      "r(d + k)",
+      "r·d·k",
+      "d + k"
+    ],
+    "answer": [1],
+    "idea": "Base weights frozen; ΔW = BA."
+  },
+  {
+    "week": 6,
+    "question": "Full fine-tuning on one task degrading other skills is:",
+    "options": [
+      "Catastrophic forgetting",
+      "Mode collapse",
+      "Exposure bias",
+      "Overfitting to noise"
+    ],
+    "answer": [0],
+    "idea": "Use multi-task tuning or PEFT."
+  },
+  {
+    "week": 6,
+    "question": "RLHF steps in order:",
+    "options": [
+      "SFT → reward model → PPO",
+      "PPO → SFT → reward",
+      "Reward → PPO → SFT",
+      "Pre-train → quantise → PPO"
+    ],
+    "answer": [0],
+    "idea": "InstructGPT."
+  },
+  {
+    "week": 6,
+    "question": "The KL penalty in RLHF prevents:",
+    "options": [
+      "Reward hacking / drifting far from the reference model",
+      "Tokenization errors",
+      "Overheating GPUs",
+      "Mode collapse in GANs"
+    ],
+    "answer": [0],
+    "idea": "Keeps outputs natural."
+  },
+  {
+    "week": 6,
+    "question": "Prompt tuning trains:",
+    "options": [
+      "Soft prompt embeddings",
+      "All weights",
+      "The tokenizer",
+      "The reward model"
+    ],
+    "answer": [0],
+    "idea": "Additive PEFT; model frozen."
+  },
+  {
+    "week": 6,
+    "question": "Summarization → ? ; translation → ?",
+    "options": [
+      "ROUGE ; BLEU",
+      "BLEU ; ROUGE",
+      "FID ; BLEU",
+      "Perplexity ; FID"
+    ],
+    "answer": [0],
+    "idea": "ROUGE recall-oriented; BLEU precision-oriented."
+  },
+  {
+    "week": 6,
+    "question": "Answering from frequently updated internal documents without retraining:",
+    "options": [
+      "RAG",
+      "Full fine-tuning",
+      "Pre-training",
+      "Distillation"
+    ],
+    "answer": [0],
+    "idea": "Retrieve relevant chunks from a vector DB into the prompt."
+  },
+  {
+    "week": 6,
+    "question": "In LangChain, the LLM choosing which tool to call is a(n):",
+    "options": [
+      "Agent",
+      "Chain",
+      "Prompt template",
+      "Text splitter"
+    ],
+    "answer": [0],
+    "idea": "Chains run fixed steps."
+  },
+  {
+    "week": 6,
+    "question": "Small student model trained on a large teacher's outputs:",
+    "options": [
+      "Distillation",
+      "Quantisation",
+      "Pruning",
+      "LoRA"
+    ],
+    "answer": [0],
+    "idea": "Quantisation lowers precision; pruning removes weights."
+  },
+  {
+    "week": 7,
+    "question": "Confident but false output is:",
+    "options": [
+      "Hallucination",
+      "Bias",
+      "Jailbreak",
+      "Drift"
+    ],
+    "answer": [0],
+    "idea": "Reduce with RAG, citations, human review."
+  },
+  {
+    "week": 7,
+    "question": "Probing a model with adversarial prompts before release:",
+    "options": [
+      "Red-teaming",
+      "Fine-tuning",
+      "Beam search",
+      "Distillation"
+    ],
+    "answer": [0],
+    "idea": "Finds safety failures early."
+  },
+  {
+    "week": 7,
+    "question": "Which are responsible AI principles? (select all)",
+    "options": [
+      "Fairness",
+      "Transparency",
+      "Accountability",
+      "Opacity"
+    ],
+    "answer": [0, 1, 2],
+    "idea": "Also privacy & security, reliability & safety, inclusiveness."
+  }
+]

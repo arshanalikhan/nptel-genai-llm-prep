@@ -1,0 +1,24 @@
+{
+  "code": "imb26_mg164",
+  "title": "Generative AI and Large Language Models",
+  "institute": "IIM Bangalore",
+  "instructor": "Prof. Naveen Kumar Bhansali",
+  "run": "Jul–Oct 2026",
+  "examDate": "2026-12-11",
+  "passRule": "Exam ≥ 30/75 and assignments ≥ 10/25",
+  "weeks": [
+    { "week": 1, "title": "Natural Language Processing" },
+    { "week": 2, "title": "Sequential data, RNNs & encoder–decoder" },
+    { "week": 3, "title": "Attention & transformers" },
+    { "week": 4, "title": "Introduction to Generative AI" },
+    { "week": 5, "title": "Large Language Models" },
+    { "week": 6, "title": "Generative AI project lifecycle" },
+    { "week": 7, "title": "Responsible AI" }
+  ],
+  "studyPlan": [
+    { "from": "2026-10-19", "to": "2026-11-08" },
+    { "from": "2026-11-09", "to": "2026-11-22" },
+    { "from": "2026-11-23", "to": "2026-12-06" },
+    { "from": "2026-12-07", "to": "2026-12-11" }
+  ]
+}

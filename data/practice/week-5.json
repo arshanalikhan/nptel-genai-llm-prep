@@ -1,0 +1,273 @@
+{
+  "week": 5,
+  "title": "Large Language Models",
+  "questions": [
+    {
+      "question": "LLM pre-training is self-supervised because:",
+      "options": [
+        "Humans label every sentence",
+        "The training targets come from the text itself (e.g. the next word)",
+        "No data is used",
+        "Rewards are given by users"
+      ],
+      "answer": [1],
+      "explanation": "No manual labels needed, so it scales to web-sized corpora."
+    },
+    {
+      "question": "GPT-style models are trained with:",
+      "options": [
+        "Masked language modelling",
+        "Causal (next-token) language modelling",
+        "Contrastive loss",
+        "Reconstruction loss"
+      ],
+      "answer": [1],
+      "explanation": "Predict token t from tokens before t."
+    },
+    {
+      "question": "BERT's pre-training objective is:",
+      "options": [
+        "Next-token prediction",
+        "Masked language modelling (plus next-sentence prediction)",
+        "Denoising images",
+        "RLHF"
+      ],
+      "answer": [1],
+      "explanation": "About 15% of tokens are masked and predicted from both sides."
+    },
+    {
+      "question": "Giving a model 3 worked examples in the prompt before the real question is:",
+      "options": [
+        "Fine-tuning",
+        "Few-shot prompting",
+        "RLHF",
+        "Pre-training"
+      ],
+      "answer": [1],
+      "explanation": "In-context learning: weights don't change."
+    },
+    {
+      "question": "Which is true of in-context learning?",
+      "options": [
+        "It updates model weights",
+        "It uses examples in the prompt without changing weights",
+        "It needs a GPU cluster",
+        "It only works on BERT"
+      ],
+      "answer": [1],
+      "explanation": "Examples consume context window space."
+    },
+    {
+      "question": "Adding \"Let's think step by step\" to improve reasoning is:",
+      "options": [
+        "Chain-of-thought prompting",
+        "Beam search",
+        "Quantisation",
+        "Prompt tuning"
+      ],
+      "answer": [0],
+      "explanation": "Zero-shot chain of thought (Kojima et al.)."
+    },
+    {
+      "question": "Lowering temperature towards 0 makes outputs:",
+      "options": [
+        "More random",
+        "More deterministic, closer to greedy",
+        "Longer",
+        "Multilingual"
+      ],
+      "answer": [1],
+      "explanation": "Logits are divided by T; small T sharpens the distribution."
+    },
+    {
+      "question": "For creative marketing slogans with variety, you would typically:",
+      "options": [
+        "Set temperature very close to 0",
+        "Use a moderately higher temperature / top-p sampling",
+        "Use greedy decoding",
+        "Set max tokens to 1"
+      ],
+      "answer": [1],
+      "explanation": "Sampling with higher temperature adds diversity."
+    },
+    {
+      "question": "Top-p (nucleus) sampling with p = 0.9:",
+      "options": [
+        "Always samples from exactly 9 tokens",
+        "Samples from the smallest set of tokens whose probabilities add up to at least 0.9",
+        "Takes the top 90 tokens",
+        "Uses greedy decoding"
+      ],
+      "answer": [1],
+      "explanation": "The set size adapts to how confident the model is."
+    },
+    {
+      "question": "Probabilities: A 0.5, B 0.3, C 0.1, D 0.1. Which tokens are kept with top-p = 0.75?",
+      "options": [
+        "A",
+        "A, B",
+        "A, B, C",
+        "All"
+      ],
+      "answer": [1],
+      "explanation": "0.5 < 0.75; 0.5 + 0.3 = 0.8 ≥ 0.75 → {A, B}.",
+      "numerical": true
+    },
+    {
+      "question": "Logits 1 and 0 at T = 1. P(first) ≈ ?",
+      "options": [
+        "0.50",
+        "0.62",
+        "0.73",
+        "0.88"
+      ],
+      "answer": [2],
+      "explanation": "e/(e+1) = 2.718/3.718 ≈ 0.73.",
+      "numerical": true
+    },
+    {
+      "question": "In general, lower perplexity means:",
+      "options": [
+        "A worse language model",
+        "A better language model",
+        "More parameters",
+        "Higher temperature"
+      ],
+      "answer": [1],
+      "explanation": "Perplexity = exp(average negative log-likelihood); lower = less surprised by real text."
+    },
+    {
+      "question": "If a model assigns probability 0.25 to every correct token, its perplexity is:",
+      "options": [
+        "0.25",
+        "2",
+        "4",
+        "25"
+      ],
+      "answer": [2],
+      "explanation": "exp(−log 0.25) = 1/0.25 = 4.",
+      "numerical": true
+    },
+    {
+      "question": "An LLM confidently cites a court case that doesn't exist. This is:",
+      "options": [
+        "Overfitting",
+        "Hallucination",
+        "Mode collapse",
+        "Tokenization"
+      ],
+      "answer": [1],
+      "explanation": "Fluent, plausible, false output."
+    },
+    {
+      "question": "The context window of an LLM is:",
+      "options": [
+        "Its parameter count",
+        "The maximum number of tokens it can process at once (prompt + output)",
+        "Its training data size",
+        "Its vocabulary size"
+      ],
+      "answer": [1],
+      "explanation": "Text beyond it is not seen."
+    },
+    {
+      "question": "\"Emergent abilities\" refers to:",
+      "options": [
+        "Abilities that appear only beyond a certain model scale",
+        "Bugs in small models",
+        "Image generation",
+        "Tokenizer errors"
+      ],
+      "answer": [0],
+      "explanation": "e.g. few-shot arithmetic or multi-step reasoning at large scale."
+    },
+    {
+      "question": "GPT-3 has about how many parameters?",
+      "options": [
+        "1.5 billion",
+        "175 billion",
+        "7 billion",
+        "340 million"
+      ],
+      "answer": [1],
+      "explanation": "GPT-2 1.5B; BERT-large 340M."
+    },
+    {
+      "question": "Which prompt practices usually improve outputs? (select all)",
+      "options": [
+        "Specify the output format",
+        "Give relevant examples",
+        "Use delimiters around input text",
+        "Make the instruction as vague as possible"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "Clear, specific prompts work best."
+    },
+    {
+      "question": "A base (foundation) model differs from an instruction-tuned chat model in that the base model:",
+      "options": [
+        "Follows instructions better",
+        "Mainly continues text and may not follow instructions well",
+        "Has no parameters",
+        "Cannot be fine-tuned"
+      ],
+      "answer": [1],
+      "explanation": "Instruction tuning and RLHF turn a base model into an assistant."
+    },
+    {
+      "question": "Self-consistency prompting:",
+      "options": [
+        "Uses one greedy answer",
+        "Samples several reasoning paths and takes the majority answer",
+        "Fine-tunes the model",
+        "Removes chain of thought"
+      ],
+      "answer": [1],
+      "explanation": "Improves reasoning accuracy at higher cost."
+    },
+    {
+      "question": "Greedy decoding often produces:",
+      "options": [
+        "Highly diverse text",
+        "Repetitive, dull text",
+        "Random text",
+        "No text"
+      ],
+      "answer": [1],
+      "explanation": "Always picking the top token can loop."
+    },
+    {
+      "question": "Which are known limitations of LLMs? (select all)",
+      "options": [
+        "Knowledge cutoff",
+        "Hallucination",
+        "Limited context window",
+        "Perfect arithmetic"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "LLMs are often weak at exact arithmetic."
+    },
+    {
+      "question": "Assigning \"You are an experienced tax consultant…\" at the start of a prompt is:",
+      "options": [
+        "Role (persona) prompting",
+        "Quantisation",
+        "Distillation",
+        "RAG"
+      ],
+      "answer": [0],
+      "explanation": "Sets tone and expertise."
+    },
+    {
+      "question": "Which model can take an image plus a question about it as input?",
+      "options": [
+        "A multimodal LLM",
+        "Word2Vec",
+        "A unigram model",
+        "TF-IDF"
+      ],
+      "answer": [0],
+      "explanation": "e.g. GPT-4o, Gemini, Claude."
+    }
+  ]
+}

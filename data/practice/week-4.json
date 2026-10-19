@@ -1,0 +1,270 @@
+{
+  "week": 4,
+  "title": "Introduction to Generative AI",
+  "questions": [
+    {
+      "question": "A discriminative model learns:",
+      "options": [
+        "P(x)",
+        "P(y | x)",
+        "Only P(y)",
+        "Noise schedules"
+      ],
+      "answer": [1],
+      "explanation": "Generative models learn P(x) or P(x, y) and can sample new x."
+    },
+    {
+      "question": "Which is a generative AI task?",
+      "options": [
+        "Classifying a loan as risky",
+        "Creating a new product image from a text description",
+        "Predicting churn probability",
+        "Clustering customers"
+      ],
+      "answer": [1],
+      "explanation": "It creates new content."
+    },
+    {
+      "question": "An autoencoder is trained to:",
+      "options": [
+        "Classify labels",
+        "Reconstruct its input through a bottleneck",
+        "Discriminate real from fake",
+        "Rank outputs"
+      ],
+      "answer": [1],
+      "explanation": "Encoder compresses, decoder reconstructs; loss = reconstruction error."
+    },
+    {
+      "question": "Which is NOT a typical use of a plain autoencoder?",
+      "options": [
+        "Dimensionality reduction",
+        "Denoising",
+        "Anomaly detection",
+        "Generating diverse new faces by sampling random latent codes"
+      ],
+      "answer": [3],
+      "explanation": "A plain autoencoder's latent space has gaps; VAEs fix this for sampling."
+    },
+    {
+      "question": "The VAE loss combines:",
+      "options": [
+        "Reconstruction loss and KL divergence",
+        "Cross-entropy and hinge loss",
+        "BLEU and ROUGE",
+        "Adversarial and cycle loss"
+      ],
+      "answer": [0],
+      "explanation": "KL pushes the latent distribution towards a standard normal."
+    },
+    {
+      "question": "The reparameterisation trick writes z as:",
+      "options": [
+        "z = μ + σ·ε, ε ~ N(0,1)",
+        "z = softmax(μ)",
+        "z = x",
+        "z = Wx + b"
+      ],
+      "answer": [0],
+      "explanation": "Moves randomness into ε so gradients flow through μ and σ."
+    },
+    {
+      "question": "In a GAN the generator tries to:",
+      "options": [
+        "Classify images",
+        "Produce samples the discriminator judges as real",
+        "Minimise reconstruction error",
+        "Compute attention"
+      ],
+      "answer": [1],
+      "explanation": "Minimax game against the discriminator."
+    },
+    {
+      "question": "A GAN keeps producing nearly identical images for every noise input. This is:",
+      "options": [
+        "Overfitting",
+        "Mode collapse",
+        "Vanishing attention",
+        "Exposure bias"
+      ],
+      "answer": [1],
+      "explanation": "The generator covers only a few modes of the data."
+    },
+    {
+      "question": "Which GAN variant translates horses to zebras without paired images?",
+      "options": [
+        "DCGAN",
+        "CycleGAN",
+        "StyleGAN",
+        "Conditional VAE"
+      ],
+      "answer": [1],
+      "explanation": "Cycle-consistency loss allows unpaired translation."
+    },
+    {
+      "question": "In a diffusion model the forward process:",
+      "options": [
+        "Is learned by a U-Net",
+        "Gradually adds Gaussian noise to data",
+        "Removes noise",
+        "Classifies images"
+      ],
+      "answer": [1],
+      "explanation": "Fixed process; the network learns the reverse (denoising)."
+    },
+    {
+      "question": "Main drawback of classic diffusion models compared with GANs:",
+      "options": [
+        "Low image quality",
+        "Slow sampling over many denoising steps",
+        "Mode collapse",
+        "No training data needed"
+      ],
+      "answer": [1],
+      "explanation": "Many steps per image; latent diffusion and faster samplers reduce this."
+    },
+    {
+      "question": "Stable Diffusion runs diffusion in:",
+      "options": [
+        "Pixel space only",
+        "A compressed latent space",
+        "The frequency domain",
+        "Text space"
+      ],
+      "answer": [1],
+      "explanation": "Latent diffusion (Rombach et al.), with an autoencoder to and from pixels."
+    },
+    {
+      "question": "CLIP is trained by:",
+      "options": [
+        "Reconstructing images",
+        "Contrastively matching images with their captions",
+        "Masking words",
+        "Adversarial loss"
+      ],
+      "answer": [1],
+      "explanation": "Matching pairs are pulled together in a shared embedding space."
+    },
+    {
+      "question": "CLIP allows zero-shot image classification because:",
+      "options": [
+        "It is trained on labels",
+        "You can compare an image embedding with embeddings of text prompts like \"a photo of a dog\"",
+        "It uses k-means",
+        "It has no encoder"
+      ],
+      "answer": [1],
+      "explanation": "The best-matching text prompt is the predicted class."
+    },
+    {
+      "question": "Which models generate images? (select all)",
+      "options": [
+        "DALL·E",
+        "Stable Diffusion",
+        "Midjourney",
+        "BERT"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "BERT is a text encoder."
+    },
+    {
+      "question": "VAE outputs tend to be:",
+      "options": [
+        "Very sharp",
+        "Somewhat blurry",
+        "Always text",
+        "Identical to inputs"
+      ],
+      "answer": [1],
+      "explanation": "Averaging under the reconstruction loss blurs details; GANs and diffusion are sharper."
+    },
+    {
+      "question": "FID (Fréchet Inception Distance) for generated images is better when:",
+      "options": [
+        "Higher",
+        "Lower",
+        "Equal to 1",
+        "Negative"
+      ],
+      "answer": [1],
+      "explanation": "Lower FID = generated distribution closer to real images."
+    },
+    {
+      "question": "Who introduced GANs (2014)?",
+      "options": [
+        "Vaswani",
+        "Goodfellow",
+        "Hinton",
+        "Mikolov"
+      ],
+      "answer": [1],
+      "explanation": "Ian Goodfellow et al."
+    },
+    {
+      "question": "A conditional GAN differs from a basic GAN by:",
+      "options": [
+        "Removing the discriminator",
+        "Feeding extra information (e.g. a class label) to generator and discriminator",
+        "Using no noise",
+        "Using text only"
+      ],
+      "answer": [1],
+      "explanation": "Lets you control what is generated."
+    },
+    {
+      "question": "The usual network that predicts noise in image diffusion models is a:",
+      "options": [
+        "U-Net",
+        "Bag of words",
+        "Decision tree",
+        "RNN"
+      ],
+      "answer": [0],
+      "explanation": "Encoder–decoder CNN with skip connections, often with attention."
+    },
+    {
+      "question": "A bank wants realistic synthetic transaction records for testing without exposing customer data. Which GenAI use is this?",
+      "options": [
+        "Synthetic data generation",
+        "Sentiment analysis",
+        "Machine translation",
+        "Speech recognition"
+      ],
+      "answer": [0],
+      "explanation": "Generative models can create privacy-preserving synthetic data."
+    },
+    {
+      "question": "GAN training is known to be:",
+      "options": [
+        "Always stable",
+        "Often unstable and hard to balance",
+        "Free of hyperparameters",
+        "Supervised by labels"
+      ],
+      "answer": [1],
+      "explanation": "If the discriminator wins too easily, the generator gets no useful gradient."
+    },
+    {
+      "question": "Which statements about the latent space of a VAE are true? (select all)",
+      "options": [
+        "It is continuous",
+        "Nearby points decode to similar outputs",
+        "You can sample new points from N(0, I)",
+        "It is always one-hot"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "The KL term makes it smooth and sampleable."
+    },
+    {
+      "question": "The discriminator in a GAN is essentially a:",
+      "options": [
+        "Binary classifier (real vs fake)",
+        "Regressor",
+        "Tokenizer",
+        "Language model"
+      ],
+      "answer": [0],
+      "explanation": "Outputs the probability that the input is real."
+    }
+  ]
+}

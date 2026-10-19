@@ -1,0 +1,9 @@
+/* Reference pages: the last-minute traps list and the resources / sources list. */
+
+.traps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 0 28px; margin: 0; padding: 0; list-style: none }
+.traps li { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: .95rem }
+.traps li b { font-weight: 600 }
+
+.src { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; max-width: 85ch }
+.src li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px }
+.src li span { color: var(--muted); font-size: .93rem }

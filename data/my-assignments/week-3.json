@@ -1,0 +1,116 @@
+{
+  "week": 3,
+  "source": "NPTEL Week 3 assessment, Jul–Oct 2026 run (accepted answers, reworded)",
+  "questions": [
+    {
+      "question": "What makes transformers far more parallelisable than RNNs?",
+      "options": [
+        "No recurrence across time steps",
+        "Weight sharing",
+        "Gradient clipping",
+        "Sparse attention matrices"
+      ],
+      "answer": [0],
+      "explanation": "Without h_t depending on h_(t−1), all positions are computed at once."
+    },
+    {
+      "question": "How does masked language modelling let BERT learn bidirectional context?",
+      "options": [
+        "It predicts only the next word",
+        "It predicts randomly hidden tokens using both left and right context",
+        "It trains only on short sentences",
+        "It removes stop words"
+      ],
+      "answer": [1],
+      "explanation": "~15% of tokens are masked and predicted from both sides."
+    },
+    {
+      "question": "The [CLS] token in BERT:",
+      "options": [
+        "Marks sentence boundaries",
+        "Represents the whole sequence for classification tasks",
+        "Stores attention weights",
+        "Separates subword units"
+      ],
+      "answer": [1],
+      "explanation": "Its final hidden state feeds the classifier. [SEP] marks boundaries."
+    },
+    {
+      "question": "Why do models like BERT use WordPiece tokenization?",
+      "options": [
+        "It removes stop words",
+        "It guarantees every word is in the dictionary",
+        "It builds its subword vocabulary by likelihood optimisation",
+        "It assigns POS tags"
+      ],
+      "answer": [2],
+      "explanation": "WordPiece merges the pieces that most increase the training-data likelihood (BPE merges by frequency)."
+    },
+    {
+      "question": "Which property lets GPT generate text?",
+      "options": [
+        "Bidirectional self-attention",
+        "Autoregressive decoding with causal masking",
+        "Recurrent feedback loops",
+        "Encoder–decoder attention"
+      ],
+      "answer": [1],
+      "explanation": "Each token sees only earlier tokens, so it can predict the next one."
+    },
+    {
+      "question": "In ULMFiT, which stage adapts the language model to the target domain?",
+      "options": [
+        "Pre-training on Wikipedia",
+        "Discriminative fine-tuning",
+        "Classifier training",
+        "Target-task (LM) fine-tuning"
+      ],
+      "answer": [3],
+      "explanation": "ULMFiT: (1) general LM pre-training, (2) target-task LM fine-tuning on domain text, (3) classifier fine-tuning. Discriminative learning rates are a technique used inside stage 2, not the stage itself."
+    },
+    {
+      "question": "The feed-forward network inside each transformer block:",
+      "options": [
+        "Computes attention weights",
+        "Adds non-linearity and transforms each token's representation",
+        "Encodes word order",
+        "Tokenizes text"
+      ],
+      "answer": [1],
+      "explanation": "Same two-layer MLP applied to every position."
+    },
+    {
+      "question": "Which component passes information from the encoder to the decoder?",
+      "options": [
+        "Positional encoding",
+        "Feed-forward network",
+        "Cross-attention layer",
+        "Layer normalisation"
+      ],
+      "answer": [2],
+      "explanation": "Decoder queries attend to encoder keys and values."
+    },
+    {
+      "question": "Why is the dot product divided by √d_k in scaled attention?",
+      "options": [
+        "To save memory",
+        "To keep gradients stable when the key dimension is large",
+        "To make weights sparse",
+        "To normalise word frequencies"
+      ],
+      "answer": [1],
+      "explanation": "Large dot products saturate softmax and shrink gradients."
+    },
+    {
+      "question": "How do ELMo's contextual embeddings differ from Word2Vec's?",
+      "options": [
+        "Same vector in every context",
+        "They depend on the whole sentence context",
+        "They need no training",
+        "They ignore syntax"
+      ],
+      "answer": [1],
+      "explanation": "ELMo uses a bidirectional LSTM over the sentence, so \"bank\" gets different vectors."
+    }
+  ]
+}

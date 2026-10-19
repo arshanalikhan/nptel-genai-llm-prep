@@ -1,0 +1,116 @@
+{
+  "week": 1,
+  "source": "NPTEL Week 1 assessment, Jul–Oct 2026 run (accepted answers, reworded)",
+  "questions": [
+    {
+      "question": "Which pair of words would most likely have similar word embeddings?",
+      "options": [
+        "Happy, Joyful",
+        "Car, Bicycle",
+        "Ocean, Mountain",
+        "Dog, Cat"
+      ],
+      "answer": [0],
+      "explanation": "Synonyms appear in nearly identical contexts, so their vectors end up closest. (Dog/cat are related but not interchangeable.)"
+    },
+    {
+      "question": "Which statement about TF-IDF is FALSE?",
+      "options": [
+        "It measures how important a word is to a document relative to the corpus",
+        "TF reflects how often a term appears in a document; IDF reflects how rare it is across documents",
+        "A high TF-IDF score means the term is common across all documents and so not very important",
+        "It is used for document classification and information retrieval"
+      ],
+      "answer": [2],
+      "explanation": "The reverse is true: a high score means the word is frequent in this document but rare elsewhere, so it is distinctive. Words common everywhere get a low IDF."
+    },
+    {
+      "question": "Which is the correct order of steps in an NLP pipeline (per the course)?",
+      "options": [
+        "Lemmatization → Tokenization → NER → POS tagging",
+        "NER → Tokenization → POS tagging → Lemmatization",
+        "Tokenization → POS tagging → Lemmatization → NER",
+        "Tokenization → Lemmatization → POS tagging → NER"
+      ],
+      "answer": [2],
+      "explanation": "Tokenize first; POS tags are needed for accurate lemmatization; NER comes last on the processed tokens."
+    },
+    {
+      "question": "In NLP, a \"corpus\" is:",
+      "options": [
+        "A large collection of texts used to train a model",
+        "One document used for training",
+        "Only the labels in supervised learning",
+        "A random subset of training words"
+      ],
+      "answer": [0],
+      "explanation": "Corpus = the body of text the model learns from."
+    },
+    {
+      "question": "In a sentiment-analysis workflow, text is turned into numerical vectors during:",
+      "options": [
+        "Model evaluation",
+        "Data pre-processing",
+        "Sentiment classification",
+        "Data collection"
+      ],
+      "answer": [1],
+      "explanation": "Vectorisation (BoW, TF-IDF, embeddings) is part of pre-processing, before the classifier runs."
+    },
+    {
+      "question": "Why is data cleaning done in sentiment analysis?",
+      "options": [
+        "To classify sentiments",
+        "To gather data from sources",
+        "To remove noise and irrelevant information",
+        "To visualise trends"
+      ],
+      "answer": [2],
+      "explanation": "Cleaning strips HTML, URLs, punctuation noise, stop words, etc."
+    },
+    {
+      "question": "Sub-word tokenization helps a language model by:",
+      "options": [
+        "Splitting rare or unseen words into smaller frequent pieces",
+        "Detecting punctuation",
+        "Ignoring maths expressions",
+        "Storing large documents"
+      ],
+      "answer": [0],
+      "explanation": "BPE/WordPiece avoid out-of-vocabulary words."
+    },
+    {
+      "question": "According to the course, how does a sparse matrix help in generative AI models?",
+      "options": [
+        "It adds noise to outputs",
+        "It produces high-resolution images",
+        "It compresses large data, cutting memory use and computation",
+        "It removes irrelevant points to raise accuracy"
+      ],
+      "answer": [2],
+      "explanation": "Storing only non-zero entries saves memory and skips useless computation."
+    },
+    {
+      "question": "\"Natural language\" in AI means:",
+      "options": [
+        "A programming language for AI",
+        "Any language humans speak, such as English or Hindi",
+        "A formal logic language",
+        "A symbolic maths language"
+      ],
+      "answer": [1],
+      "explanation": "NLP deals with human languages, as opposed to formal/programming languages."
+    },
+    {
+      "question": "How do language models pick up acronyms, abbreviations and maths expressions during training?",
+      "options": [
+        "As unrelated random symbols",
+        "By ignoring them",
+        "By tokenizing them and learning their context from a large corpus",
+        "By hand-encoding each one"
+      ],
+      "answer": [2],
+      "explanation": "They are just tokens; meaning comes from the contexts they appear in."
+    }
+  ]
+}

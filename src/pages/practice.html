@@ -1,0 +1,23 @@
+<section id="practice" class="page" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Practice bank</p>
+      <h2>Questions by week</h2>
+      <p>"My 2026 assignments" holds the {{mine_count}} questions from your own weeks {{mine_weeks}} assignments, reworded, with NPTEL's accepted answers (later weeks are added once their due date passes). "Practice bank" holds original questions written from the syllabus: definitions, scenarios and numericals, each with an explanation. Single-answer questions mark as soon as you pick. For "select all" questions, pick every option you think is right, then press Check. Your answers stay in this browser.</p>
+    </div>
+    <div class="toolbar">
+      <div class="chips" id="chips" role="group" aria-label="Filter by week"></div>
+      <div class="actions">
+        <div class="left">
+          <button class="btn" id="shuffle" type="button">Shuffle</button>
+          <button class="btn" id="reveal" type="button" aria-pressed="false">Show all answers</button>
+          <button class="btn" id="reset" type="button">Reset this set</button>
+        </div>
+        <p class="score" id="score" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="qpager" id="qpagerTop"></div>
+    <div class="qlist" id="qlist"></div>
+    <div class="qpager" id="qpagerBot"></div>
+  </div>
+</section>

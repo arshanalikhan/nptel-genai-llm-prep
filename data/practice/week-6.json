@@ -1,0 +1,308 @@
+{
+  "week": 6,
+  "title": "Generative AI project lifecycle",
+  "questions": [
+    {
+      "question": "The first stage of the generative AI project lifecycle is:",
+      "options": [
+        "Deploy",
+        "Define the scope / use case",
+        "RLHF",
+        "Quantise"
+      ],
+      "answer": [1],
+      "explanation": "Scope → select → adapt & align → evaluate → deploy & integrate."
+    },
+    {
+      "question": "A company needs an LLM only to summarise support tickets. Best approach first:",
+      "options": [
+        "Pre-train a new LLM from scratch",
+        "Try prompting an existing model, then fine-tune if needed",
+        "Build a GAN",
+        "Train Word2Vec"
+      ],
+      "answer": [1],
+      "explanation": "Start with the cheapest adaptation."
+    },
+    {
+      "question": "Instruction fine-tuning trains on:",
+      "options": [
+        "Unlabelled web text",
+        "Prompt–completion pairs",
+        "Images",
+        "Rewards only"
+      ],
+      "answer": [1],
+      "explanation": "Supervised examples of instructions with good responses."
+    },
+    {
+      "question": "After fine-tuning only on summarisation, the model gets worse at other tasks. This is:",
+      "options": [
+        "Catastrophic forgetting",
+        "Mode collapse",
+        "Hallucination",
+        "Exposure bias"
+      ],
+      "answer": [0],
+      "explanation": "Remedies: multi-task fine-tuning or PEFT."
+    },
+    {
+      "question": "In PEFT, the original model weights are usually:",
+      "options": [
+        "All retrained",
+        "Frozen",
+        "Deleted",
+        "Quantised to 1 bit"
+      ],
+      "answer": [1],
+      "explanation": "Only a small set of new or selected parameters are trained."
+    },
+    {
+      "question": "LoRA adds trainable:",
+      "options": [
+        "Full copies of each layer",
+        "Low-rank matrices A and B beside frozen weights",
+        "Soft prompt tokens only",
+        "Extra attention heads"
+      ],
+      "answer": [1],
+      "explanation": "ΔW = BA, rank r ≪ d."
+    },
+    {
+      "question": "LoRA on a 1,024 × 1,024 matrix with rank 8 trains how many parameters?",
+      "options": [
+        "8,192",
+        "16,384",
+        "65,536",
+        "1,048,576"
+      ],
+      "answer": [1],
+      "explanation": "8 × (1024 + 1024) = 16,384.",
+      "numerical": true
+    },
+    {
+      "question": "For that 1,024 × 1,024 matrix, what fraction of parameters does rank-8 LoRA train?",
+      "options": [
+        "0.8%",
+        "1.6%",
+        "8%",
+        "16%"
+      ],
+      "answer": [1],
+      "explanation": "16,384 / 1,048,576 ≈ 1.56%.",
+      "numerical": true
+    },
+    {
+      "question": "Prompt tuning (soft prompts) trains:",
+      "options": [
+        "All model weights",
+        "Learnable embedding vectors prepended to the input",
+        "The tokenizer",
+        "The reward model"
+      ],
+      "answer": [1],
+      "explanation": "The words you type aren't changed; virtual tokens are learned."
+    },
+    {
+      "question": "QLoRA combines LoRA with:",
+      "options": [
+        "A 4-bit quantised base model",
+        "RLHF",
+        "GANs",
+        "Beam search"
+      ],
+      "answer": [0],
+      "explanation": "Lets large models be fine-tuned on a single GPU."
+    },
+    {
+      "question": "Advantages of PEFT over full fine-tuning: (select all)",
+      "options": [
+        "Far less memory",
+        "Small per-task checkpoints",
+        "Less catastrophic forgetting",
+        "Always higher accuracy than full fine-tuning"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "Accuracy is often close to, not always above, full fine-tuning."
+    },
+    {
+      "question": "Correct order of RLHF:",
+      "options": [
+        "PPO → reward model → SFT",
+        "SFT → reward model → PPO",
+        "Reward model → SFT → PPO",
+        "Pre-training only"
+      ],
+      "answer": [1],
+      "explanation": "InstructGPT recipe."
+    },
+    {
+      "question": "The reward model in RLHF is trained on:",
+      "options": [
+        "Human rankings of model outputs",
+        "Next-token prediction",
+        "Images",
+        "BLEU scores"
+      ],
+      "answer": [0],
+      "explanation": "Humans compare completions; the model learns to score them."
+    },
+    {
+      "question": "The KL-divergence penalty in RLHF:",
+      "options": [
+        "Speeds up tokenization",
+        "Keeps the tuned model close to the reference model to avoid reward hacking",
+        "Increases temperature",
+        "Removes the reward model"
+      ],
+      "answer": [1],
+      "explanation": "Without it the policy may exploit the reward model with odd text."
+    },
+    {
+      "question": "Which method aligns a model to preferences without training a separate reward model?",
+      "options": [
+        "PPO",
+        "DPO",
+        "Beam search",
+        "LoRA"
+      ],
+      "answer": [1],
+      "explanation": "Direct Preference Optimization."
+    },
+    {
+      "question": "ROUGE is mainly used to evaluate:",
+      "options": [
+        "Translation",
+        "Summarization",
+        "Image quality",
+        "Classification"
+      ],
+      "answer": [1],
+      "explanation": "BLEU for translation."
+    },
+    {
+      "question": "Reference has 5 words; output has 4 words, 3 overlapping. ROUGE-1 recall = ?",
+      "options": [
+        "0.6",
+        "0.75",
+        "0.8",
+        "0.67"
+      ],
+      "answer": [0],
+      "explanation": "Recall = 3/5 = 0.6 (precision would be 3/4 = 0.75).",
+      "numerical": true
+    },
+    {
+      "question": "MMLU benchmarks:",
+      "options": [
+        "Image generation",
+        "Knowledge and reasoning across 57 subjects",
+        "Speech",
+        "Translation only"
+      ],
+      "answer": [1],
+      "explanation": "Massive Multitask Language Understanding."
+    },
+    {
+      "question": "RAG reduces hallucination by:",
+      "options": [
+        "Retraining the model daily",
+        "Retrieving relevant documents and adding them to the prompt",
+        "Raising temperature",
+        "Removing the decoder"
+      ],
+      "answer": [1],
+      "explanation": "The model answers grounded in retrieved text."
+    },
+    {
+      "question": "In a RAG pipeline, document chunks are typically stored as:",
+      "options": [
+        "One-hot vectors in a spreadsheet",
+        "Embeddings in a vector database",
+        "Images",
+        "Model weights"
+      ],
+      "answer": [1],
+      "explanation": "Similarity search finds the nearest chunks to the query embedding."
+    },
+    {
+      "question": "A company wants its chatbot to answer from policy documents updated weekly. Best choice:",
+      "options": [
+        "Fine-tune weekly",
+        "RAG over the documents",
+        "Pre-train a new model",
+        "Increase temperature"
+      ],
+      "answer": [1],
+      "explanation": "RAG gives fresh knowledge without retraining."
+    },
+    {
+      "question": "In LangChain, an agent differs from a chain because an agent:",
+      "options": [
+        "Runs a fixed sequence of steps",
+        "Lets the LLM decide which tools to call and in what order",
+        "Cannot use tools",
+        "Has no prompt"
+      ],
+      "answer": [1],
+      "explanation": "Chains are predetermined; agents reason about actions (e.g. ReAct)."
+    },
+    {
+      "question": "Which are LangChain components? (select all)",
+      "options": [
+        "Prompt templates",
+        "Memory",
+        "Retrievers / vector stores",
+        "Discriminators"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "Discriminators belong to GANs."
+    },
+    {
+      "question": "Training a small model to imitate a large model's outputs is:",
+      "options": [
+        "Quantisation",
+        "Distillation",
+        "Pruning",
+        "Tokenization"
+      ],
+      "answer": [1],
+      "explanation": "Teacher → student."
+    },
+    {
+      "question": "Converting weights from fp32 to int8 is:",
+      "options": [
+        "Distillation",
+        "Quantisation",
+        "Pruning",
+        "Fine-tuning"
+      ],
+      "answer": [1],
+      "explanation": "4× smaller weights; slight accuracy loss."
+    },
+    {
+      "question": "Memory to load a 13B-parameter model in fp16 (weights only)?",
+      "options": [
+        "6.5 GB",
+        "13 GB",
+        "26 GB",
+        "52 GB"
+      ],
+      "answer": [2],
+      "explanation": "13e9 × 2 bytes = 26 GB.",
+      "numerical": true
+    },
+    {
+      "question": "Chinchilla scaling suggests a compute-optimal 10B model should be trained on about:",
+      "options": [
+        "10B tokens",
+        "200B tokens",
+        "2T tokens",
+        "1B tokens"
+      ],
+      "answer": [1],
+      "explanation": "≈ 20 tokens per parameter.",
+      "numerical": true
+    }
+  ]
+}

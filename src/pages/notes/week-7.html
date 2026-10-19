@@ -1,0 +1,31 @@
+    <article class="week" id="w7">
+      <div class="rail"><span class="num">07</span><span class="lecs">Responsible</span></div>
+      <div class="body">
+        <h3>Responsible AI</h3>
+        <figure class="diag"><p class="hint">Swipe sideways to see the whole diagram →</p><div class="scroll"><svg class="dg" viewBox="0 0 640 220" role="img" aria-label="Risks and mitigations: bias, hallucination, toxicity, privacy, IP and misuse, each mapped to mitigations across data, model and application layers."><defs><marker id="g7m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<text x="160" y="22" text-anchor="middle" class="t">Risk</text><text x="480" y="22" text-anchor="middle" class="t">Mitigation</text>
+<rect x="20" y="34" width="280" height="26" rx="6" class="b"/><text x="160" y="52" text-anchor="middle" class="k">Bias &amp; unfair outcomes</text>
+<rect x="20" y="64" width="280" height="26" rx="6" class="b"/><text x="160" y="82" text-anchor="middle" class="k">Hallucination</text>
+<rect x="20" y="94" width="280" height="26" rx="6" class="b"/><text x="160" y="112" text-anchor="middle" class="k">Toxic / harmful output</text>
+<rect x="20" y="124" width="280" height="26" rx="6" class="b"/><text x="160" y="142" text-anchor="middle" class="k">Privacy &amp; data leakage</text>
+<rect x="20" y="154" width="280" height="26" rx="6" class="b"/><text x="160" y="172" text-anchor="middle" class="k">IP / copyright</text>
+<rect x="20" y="184" width="280" height="26" rx="6" class="b"/><text x="160" y="202" text-anchor="middle" class="k">Misuse: deepfakes, misinformation</text>
+<rect x="340" y="34" width="280" height="26" rx="6" class="h"/><text x="480" y="52" text-anchor="middle" class="k">diverse data · audits · fairness metrics</text>
+<rect x="340" y="64" width="280" height="26" rx="6" class="h"/><text x="480" y="82" text-anchor="middle" class="k">RAG · citations · human review</text>
+<rect x="340" y="94" width="280" height="26" rx="6" class="h"/><text x="480" y="112" text-anchor="middle" class="k">RLHF · guardrails · red-teaming</text>
+<rect x="340" y="124" width="280" height="26" rx="6" class="h"/><text x="480" y="142" text-anchor="middle" class="k">PII masking · consent · access control</text>
+<rect x="340" y="154" width="280" height="26" rx="6" class="h"/><text x="480" y="172" text-anchor="middle" class="k">licensed data · provenance</text>
+<rect x="340" y="184" width="280" height="26" rx="6" class="h"/><text x="480" y="202" text-anchor="middle" class="k">watermarking · usage policies</text>
+<line x1="300" y1="47" x2="338" y2="47" class="a" marker-end="url(#g7m)"/><line x1="300" y1="77" x2="338" y2="77" class="a" marker-end="url(#g7m)"/><line x1="300" y1="107" x2="338" y2="107" class="a" marker-end="url(#g7m)"/><line x1="300" y1="137" x2="338" y2="137" class="a" marker-end="url(#g7m)"/><line x1="300" y1="167" x2="338" y2="167" class="a" marker-end="url(#g7m)"/><line x1="300" y1="197" x2="338" y2="197" class="a" marker-end="url(#g7m)"/></svg></div><figcaption>Each risk has a matching control. No single fix is enough; responsible deployment stacks controls at the data, model and application layers, with humans accountable for the result.</figcaption></figure>
+        <ul class="notes">
+          <li><span class="tag">KEY</span><b>Principles:</b> fairness, reliability &amp; safety, privacy &amp; security, inclusiveness, transparency, accountability (Microsoft's six); also explainability and human oversight.</li>
+          <li><span class="tag">KEY</span><b>Bias:</b> comes from training data (historical, representation, measurement bias), labelling and deployment context. Models can amplify stereotypes (e.g. gendered job roles). Mitigate with representative data, bias audits, fairness metrics, debiasing and human review.</li>
+          <li><span class="tag">KEY</span><b>Hallucination:</b> confident, plausible but wrong output (fake citations). Causes: the model predicts likely text, not verified facts. Mitigate: RAG with sources, lower temperature, ask for citations, verification steps, human-in-the-loop for high-stakes use.</li>
+          <li><b>Toxicity &amp; safety:</b> content filters / guardrails on input and output, RLHF, Constitutional AI, <b>red-teaming</b> (deliberately attacking the model to find failures). <b>Prompt injection</b> and <b>jailbreaks</b> try to override instructions.</li>
+          <li><b>Privacy:</b> models can memorise and leak personal data; mask PII, minimise data, get consent, follow GDPR / India's DPDP Act 2023. Don't paste confidential data into public tools.</li>
+          <li><b>Intellectual property:</b> training on copyrighted works and ownership of generated output are unsettled legal questions; prefer licensed data and track provenance.</li>
+          <li><b>Transparency:</b> model cards and datasheets document data, intended use and limits; disclose AI-generated content; <b>watermarking</b> helps detect it.</li>
+          <li><b>Governance:</b> risk-based regulation (EU AI Act tiers: unacceptable, high, limited, minimal risk), AI policies, human accountability, monitoring after deployment. Also environmental cost of training large models.</li>
+        </ul>
+      </div>
+    </article>

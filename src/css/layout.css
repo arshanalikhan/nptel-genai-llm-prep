@@ -1,0 +1,110 @@
+/* App shell: desktop sidebar, phone top bar + bottom tabs + "More" sheet, page sections,
+   page transitions, the previous/next pager, the theme button and the back-to-top button. */
+
+/* ---------- Brand mark ---------- */
+.brand { display: inline-flex; align-items: center; gap: 8px; flex: none; text-decoration: none; color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 1.05rem }
+.brand svg { width: 28px; height: 28px }
+.brand .brand-bg { fill: var(--accent) }
+.brand .brand-fg { fill: var(--on-accent) }
+.brand span small { display: block; font-family: var(--mono); font-size: .62rem; font-weight: 500; letter-spacing: .06em; color: var(--muted); text-transform: uppercase }
+
+/* ---------- Desktop sidebar (≥ 1024 px) ---------- */
+.sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: 248px; z-index: 25; display: flex; flex-direction: column; gap: 20px; padding: 22px 14px calc(16px + env(safe-area-inset-bottom, 0px)); border-right: 1px solid var(--line); background: var(--surface); overflow-y: auto }
+.sidebar .brand { padding: 0 8px }
+.side-nav { display: grid; gap: 2px }
+.side-nav a { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-radius: 10px; color: var(--muted); text-decoration: none; font-weight: 500; font-size: .95rem; transition: background .15s, color .15s }
+.side-nav a svg { width: 18px; height: 18px; flex: none }
+.side-nav a.on { background: var(--accent-soft); color: var(--accent); font-weight: 600 }
+.side-foot { margin-top: auto; display: grid; gap: 10px }
+.side-count { display: flex; align-items: baseline; gap: 8px; padding: 12px 14px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line) }
+.side-count b { font-family: var(--display); font-size: 1.9rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums }
+.side-count span { font-size: .8rem; color: var(--muted) }
+.sidebar .themebtn { justify-content: center; width: 100%; padding: 8px 12px }
+main, footer { margin-left: 248px }
+.topbar, .bottombar { display: none }
+@media (hover: hover) { .side-nav a:not(.on):hover { background: var(--bg); color: var(--ink) } }
+
+/* ---------- Phones and tablets (< 1024 px): top bar + bottom tabs ---------- */
+@media (max-width: 1023px) {
+  .sidebar { display: none }
+  main, footer { margin-left: 0 }
+  .topbar { display: flex; align-items: center; gap: 12px; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 25; padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); border-bottom: 1px solid var(--line); background: var(--surface) }
+  .topbar-title { flex: 1; margin: 0; font-family: var(--display); font-weight: 700; font-size: 1.15rem; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+  .bottombar { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: var(--surface) }
+  .bottombar a, .bottombar button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 54px; padding: 6px 2px; border: 0; border-radius: 12px; background: none; font: inherit; font-size: .7rem; font-weight: 600; color: var(--muted); text-decoration: none; cursor: pointer }
+  .bottombar svg { width: 22px; height: 22px }
+  .bottombar .on { color: var(--accent); background: var(--accent-soft) }
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) }
+}
+@media (max-width: 640px) { .brand span { display: none } }
+@media (max-width: 360px) { .bottombar a, .bottombar button { font-size: .62rem } }
+
+/* Frosted glass bars where the browser supports it */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) and (background: color-mix(in srgb, red 50%, transparent)) {
+  .topbar, .bottombar { background: color-mix(in srgb, var(--surface) 80%, transparent); -webkit-backdrop-filter: saturate(1.5) blur(14px); backdrop-filter: saturate(1.5) blur(14px) }
+}
+
+/* ---------- "More" sheet on phones ---------- */
+.sheet { position: fixed; inset: 0; z-index: 40; display: flex; align-items: flex-end; background: rgba(4, 10, 14, .45) }
+.sheet[hidden] { display: none }
+.sheet-panel { width: 100%; display: grid; gap: 4px; padding: 8px 14px calc(18px + env(safe-area-inset-bottom, 0px)); border-radius: 20px 20px 0 0; background: var(--surface); box-shadow: 0 -12px 32px rgba(0, 0, 0, .22); animation: sheetUp .24s cubic-bezier(.2, .7, .2, 1) both }
+.sheet-grip { width: 42px; height: 4px; border-radius: 999px; background: var(--line); justify-self: center; margin: 6px 0 10px }
+.sheet a { display: flex; align-items: center; gap: 14px; padding: 12px; border-radius: 12px; text-decoration: none; color: var(--ink) }
+.sheet a svg { width: 22px; height: 22px; color: var(--accent); flex: none }
+.sheet a b { display: block; font-weight: 600 }
+.sheet a small { display: block; color: var(--muted); font-size: .82rem }
+.sheet a.on { background: var(--accent-soft) }
+@keyframes sheetUp { from { transform: translateY(40px); opacity: 0 } to { transform: none; opacity: 1 } }
+
+/* ---------- Pages ---------- */
+section, .week { scroll-margin-top: calc(var(--navh, 54px) + 10px) }
+section > .wrap { display: grid; gap: 22px; padding-block: 44px }
+main > section.page { min-height: calc(100vh - var(--navh, 54px) - 190px) }
+main > section.page > .wrap { padding-block: 34px 26px }
+.sec-head { display: grid; gap: 6px }
+.sec-head p { max-width: 68ch; color: var(--muted) }
+footer .wrap { padding-block: 28px; color: var(--muted); font-size: .86rem }
+@media (max-width: 640px) {
+  section > .wrap { gap: 18px; padding-block: 32px }
+  main > section.page > .wrap { padding-block: 24px 20px }
+}
+
+/* Page enter animation, or the View Transitions API where available */
+.page.enter, .week.enter { animation: pageIn .32s cubic-bezier(.2, .7, .2, 1) both }
+@keyframes pageIn { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
+main { view-transition-name: pagebody }
+::view-transition-old(pagebody) { animation: vtOut .16s ease both }
+::view-transition-new(pagebody) { animation: vtIn .32s cubic-bezier(.2, .7, .2, 1) both }
+@keyframes vtOut { to { opacity: 0; transform: translateY(-6px) } }
+@keyframes vtIn { from { opacity: 0; transform: translateY(12px) } }
+@media (prefers-reduced-motion: reduce) {
+  .page.enter, .week.enter { animation: none }
+  ::view-transition-old(pagebody), ::view-transition-new(pagebody) { animation: none }
+  .sheet-panel { animation: none }
+}
+
+/* ---------- Previous / next page pager ---------- */
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-block: 6px 40px }
+.pg { display: grid; gap: 2px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s }
+.pg .l { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted) }
+.pg .n { font-weight: 600 }
+.pg.next { grid-column: 2; text-align: right }
+@media (hover: hover) { .pg:hover { border-color: var(--accent); transform: translateY(-2px) } }
+@media (max-width: 640px) { .pg { padding: 12px } }
+
+/* ---------- Light / dark button ---------- */
+.themebtn { flex: none; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-family: var(--mono); font-size: .82rem; line-height: 1.6; cursor: pointer; padding: 6px 12px; border: 1px solid var(--accent); border-radius: 999px; background: var(--accent-soft); color: var(--accent) }
+.themebtn svg { width: 15px; height: 15px; flex: none }
+@media (hover: hover) { .themebtn:hover { background: var(--accent); color: var(--on-accent) } }
+@media (max-width: 640px) {
+  .themebtn { width: 42px; height: 42px; padding: 0; justify-content: center }
+  .themebtn span { display: none }
+  .themebtn svg { width: 18px; height: 18px }
+}
+
+/* ---------- Back-to-top button ---------- */
+.totop { position: fixed; z-index: 30; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); width: 46px; height: 46px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; box-shadow: 0 2px 12px rgba(0, 0, 0, .18); display: none; align-items: center; justify-content: center }
+.totop svg { width: 20px; height: 20px }
+.totop.show { display: inline-flex }
+/* keep it clear of the phone bottom tabs */
+@media (max-width: 1023px) { .totop { bottom: calc(env(safe-area-inset-bottom, 0px) + 86px) } }

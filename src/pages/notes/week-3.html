@@ -1,0 +1,33 @@
+    <article class="week" id="w3">
+      <div class="rail"><span class="num">03</span><span class="lecs">Attention</span></div>
+      <div class="body">
+        <h3>Attention mechanism and transformers</h3>
+        <figure class="diag"><p class="hint">Swipe sideways to see the whole diagram →</p><div class="scroll"><svg class="dg" viewBox="0 0 640 250" role="img" aria-label="Scaled dot-product attention: Q times K transpose, scaled by root d_k, optional mask, softmax, multiplied by V."><defs><marker id="g3m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<rect x="20" y="30" width="70" height="36" rx="8" class="b"/><text x="55" y="53" text-anchor="middle" class="t">Q</text>
+<rect x="20" y="90" width="70" height="36" rx="8" class="b"/><text x="55" y="113" text-anchor="middle" class="t">K</text>
+<rect x="20" y="180" width="70" height="36" rx="8" class="b"/><text x="55" y="203" text-anchor="middle" class="t">V</text>
+<rect x="120" y="58" width="80" height="40" rx="8" class="b"/><text x="160" y="83" text-anchor="middle" class="k">Q · Kᵀ</text>
+<rect x="225" y="58" width="80" height="40" rx="8" class="b"/><text x="265" y="83" text-anchor="middle" class="k">÷ √d_k</text>
+<rect x="330" y="58" width="90" height="40" rx="8" class="b"/><text x="375" y="78" text-anchor="middle" class="k">mask</text><text x="375" y="92" text-anchor="middle" class="s">(decoder only)</text>
+<rect x="445" y="58" width="80" height="40" rx="8" class="h"/><text x="485" y="83" text-anchor="middle" class="k">softmax</text>
+<rect x="545" y="150" width="80" height="40" rx="8" class="h"/><text x="585" y="175" text-anchor="middle" class="k">× V</text>
+<line x1="90" y1="48" x2="118" y2="70" class="a" marker-end="url(#g3m)"/><line x1="90" y1="108" x2="118" y2="86" class="a" marker-end="url(#g3m)"/>
+<line x1="200" y1="78" x2="223" y2="78" class="a" marker-end="url(#g3m)"/><line x1="305" y1="78" x2="328" y2="78" class="a" marker-end="url(#g3m)"/><line x1="420" y1="78" x2="443" y2="78" class="a" marker-end="url(#g3m)"/>
+<line x1="525" y1="78" x2="580" y2="148" class="a" marker-end="url(#g3m)"/><line x1="90" y1="198" x2="543" y2="172" class="a" marker-end="url(#g3m)"/>
+<text x="485" y="125" text-anchor="middle" class="m">weights sum to 1</text>
+<text x="320" y="235" text-anchor="middle" class="m">Self-attention: Q, K, V from one sequence · cross-attention: Q from decoder, K, V from encoder</text></svg></div><figcaption>Each token asks a question (query), compares it with every token's key, turns the scores into weights with softmax, and takes the weighted average of the values. Multi-head attention runs h of these in parallel on smaller projections and concatenates them.</figcaption></figure>
+        <ul class="notes">
+          <li><span class="tag">KEY</span><b>Why attention:</b> instead of one context vector, the decoder takes a weighted sum of <i>all</i> encoder states at each step, so long sentences keep detail. Bahdanau (additive) and Luong (multiplicative/dot) attention were the first versions for seq2seq.</li>
+          <li><span class="tag">KEY</span><b>Scaled dot-product:</b> softmax(QKᵀ/√d_k)V. Scaling stops large dot products saturating softmax. Weights are non-negative and sum to 1.</li>
+          <li><span class="tag">KEY</span><b>Transformer</b> ("Attention Is All You Need", Vaswani et al., 2017): no recurrence or convolution; encoder and decoder stacks (6 each in the original) of multi-head attention + position-wise feed-forward, each with a residual connection and layer normalisation.</li>
+          <li><b>Positional encoding:</b> attention has no sense of order, so position information (sine/cosine or learned) is added to the token embeddings.</li>
+          <li><b>Masked self-attention</b> in the decoder hides future tokens so prediction of token t only sees tokens before t (causal/autoregressive).</li>
+          <li><b>Cross-attention:</b> decoder queries attend to encoder keys and values.</li>
+          <li><b>Multi-head:</b> different heads learn different relations (syntax, coreference). d_k = d_model / h.</li>
+          <li><b>Cost:</b> self-attention is O(n²) in sequence length — the reason context windows are limited — but all positions are computed in parallel, unlike RNNs.</li>
+          <li><span class="tag y">Your 2026</span><b>ULMFiT</b> (Howard &amp; Ruder, 2018), transfer learning for text before transformers: (1) pre-train a general LM on Wikipedia, (2) <b>target-task LM fine-tuning</b> on domain text (uses discriminative learning rates and slanted triangular LR), (3) classifier fine-tuning with gradual unfreezing. <b>[CLS]</b> = whole-sequence token for classification, <b>[SEP]</b> = separator. <b>WordPiece</b> picks merges by likelihood; BPE by frequency.</li>
+          <li><span class="tag">KEY</span><b>Three families:</b> encoder-only (BERT: masked LM, bidirectional, good for classification/NER), decoder-only (GPT: next-token prediction, generation), encoder–decoder (T5, BART: translation, summarization).</li>
+                  <li class="new"><span class="tag y">Your 2026</span>Your assignment asked: no recurrence → parallel; MLM uses both sides; [CLS] represents the whole sequence; WordPiece builds tokens by likelihood; GPT = autoregressive + causal mask; FFN adds non-linearity; cross-attention links encoder and decoder; ELMo is contextual. ULMFiT is the one you missed.</li>
+        </ul>
+      </div>
+    </article>

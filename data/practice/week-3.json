@@ -1,0 +1,273 @@
+{
+  "week": 3,
+  "title": "Attention & transformers",
+  "questions": [
+    {
+      "question": "Attention in seq2seq lets the decoder:",
+      "options": [
+        "Ignore the encoder",
+        "Use a weighted combination of all encoder hidden states at each step",
+        "Use only the last encoder state",
+        "Skip training"
+      ],
+      "answer": [1],
+      "explanation": "Weights change per output step, focusing on relevant input words."
+    },
+    {
+      "question": "Scaled dot-product attention is:",
+      "options": [
+        "softmax(QKᵀ)V·d_k",
+        "softmax(QKᵀ/√d_k)V",
+        "QKᵀV",
+        "softmax(Q+K)V"
+      ],
+      "answer": [1],
+      "explanation": "Vaswani et al., 2017."
+    },
+    {
+      "question": "Why divide by √d_k?",
+      "options": [
+        "To reduce memory",
+        "Large dot products push softmax into regions with tiny gradients",
+        "To normalise V",
+        "To add position information"
+      ],
+      "answer": [1],
+      "explanation": "Dot products grow with dimension; scaling keeps softmax well behaved."
+    },
+    {
+      "question": "Attention weights for one query:",
+      "options": [
+        "Can be negative",
+        "Are non-negative and sum to 1",
+        "Sum to d_k",
+        "Are always equal"
+      ],
+      "answer": [1],
+      "explanation": "They come from a softmax."
+    },
+    {
+      "question": "In self-attention, Q, K and V come from:",
+      "options": [
+        "Three different sentences",
+        "The same sequence",
+        "Only the decoder output",
+        "Random noise"
+      ],
+      "answer": [1],
+      "explanation": "Cross-attention: Q from decoder, K and V from encoder."
+    },
+    {
+      "question": "A transformer has d_model = 512 and 8 heads. Dimension per head?",
+      "options": [
+        "8",
+        "64",
+        "512",
+        "4096"
+      ],
+      "answer": [1],
+      "explanation": "512 / 8 = 64.",
+      "numerical": true
+    },
+    {
+      "question": "Why does a transformer need positional encodings?",
+      "options": [
+        "Self-attention by itself has no notion of token order",
+        "To reduce parameters",
+        "To replace embeddings",
+        "To mask future tokens"
+      ],
+      "answer": [0],
+      "explanation": "Without them, shuffled words would give the same representations."
+    },
+    {
+      "question": "Masked self-attention in the decoder prevents:",
+      "options": [
+        "Overfitting",
+        "Each position from attending to future tokens",
+        "Use of the encoder",
+        "Multiple heads"
+      ],
+      "answer": [1],
+      "explanation": "Keeps generation autoregressive."
+    },
+    {
+      "question": "Computation of self-attention grows with sequence length n as:",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n²)",
+        "O(1)"
+      ],
+      "answer": [2],
+      "explanation": "Every token attends to every token."
+    },
+    {
+      "question": "Which property lets transformers train much faster than RNNs on GPUs?",
+      "options": [
+        "Recurrence",
+        "All positions processed in parallel",
+        "Smaller vocabularies",
+        "No need for data"
+      ],
+      "answer": [1],
+      "explanation": "No step-by-step dependency in the encoder."
+    },
+    {
+      "question": "\"Attention Is All You Need\" (2017) introduced:",
+      "options": [
+        "LSTM",
+        "The transformer",
+        "GANs",
+        "Word2Vec"
+      ],
+      "answer": [1],
+      "explanation": "Vaswani et al., Google."
+    },
+    {
+      "question": "Each transformer sub-layer is wrapped with:",
+      "options": [
+        "Pooling",
+        "A residual connection and layer normalisation",
+        "Dropout only",
+        "A recurrent loop"
+      ],
+      "answer": [1],
+      "explanation": "Add & Norm."
+    },
+    {
+      "question": "BERT is:",
+      "options": [
+        "Decoder-only, next-token prediction",
+        "Encoder-only, trained with masked language modelling",
+        "Encoder–decoder for translation",
+        "A GAN"
+      ],
+      "answer": [1],
+      "explanation": "Bidirectional Encoder Representations from Transformers."
+    },
+    {
+      "question": "GPT models are:",
+      "options": [
+        "Encoder-only",
+        "Decoder-only autoregressive",
+        "Encoder–decoder",
+        "Convolutional"
+      ],
+      "answer": [1],
+      "explanation": "Generative Pre-trained Transformer."
+    },
+    {
+      "question": "Which model family is encoder–decoder? (select all)",
+      "options": [
+        "T5",
+        "BART",
+        "BERT",
+        "GPT-3"
+      ],
+      "answer": [0, 1],
+      "explanation": "BERT is encoder-only; GPT-3 is decoder-only."
+    },
+    {
+      "question": "Best fit for classifying customer emails into categories (no generation needed):",
+      "options": [
+        "Encoder-only model like BERT",
+        "GAN",
+        "Diffusion model",
+        "Decoder-only model is the only option"
+      ],
+      "answer": [0],
+      "explanation": "Encoders give rich bidirectional representations for understanding tasks."
+    },
+    {
+      "question": "In cross-attention of the original transformer, the keys and values come from:",
+      "options": [
+        "The decoder",
+        "The encoder output",
+        "Positional encodings only",
+        "The loss function"
+      ],
+      "answer": [1],
+      "explanation": "Queries come from the decoder."
+    },
+    {
+      "question": "Multi-head attention is useful because:",
+      "options": [
+        "It reduces the vocabulary",
+        "Different heads can focus on different relationships",
+        "It removes the need for softmax",
+        "It makes the model recurrent"
+      ],
+      "answer": [1],
+      "explanation": "Heads run in parallel on lower-dimensional projections, outputs concatenated."
+    },
+    {
+      "question": "Raw scores q·k for two keys are 6 and 0, with d_k = 9. After scaling, the scores are:",
+      "options": [
+        "6 and 0",
+        "2 and 0",
+        "0.67 and 0",
+        "54 and 0"
+      ],
+      "answer": [1],
+      "explanation": "Divide by √9 = 3.",
+      "numerical": true
+    },
+    {
+      "question": "Scaled scores are 1 and 1 for two keys with values 4 and 8. Attention output = ?",
+      "options": [
+        "4",
+        "6",
+        "8",
+        "12"
+      ],
+      "answer": [1],
+      "explanation": "Equal scores → weights 0.5, 0.5 → 0.5·4 + 0.5·8 = 6.",
+      "numerical": true
+    },
+    {
+      "question": "Bahdanau attention is also called:",
+      "options": [
+        "Multiplicative",
+        "Additive",
+        "Masked",
+        "Sparse"
+      ],
+      "answer": [1],
+      "explanation": "It scores with a small feed-forward network; Luong introduced multiplicative (dot) scoring."
+    },
+    {
+      "question": "The position-wise feed-forward network in a transformer layer is applied:",
+      "options": [
+        "Once to the whole sequence jointly",
+        "Separately and identically to each position",
+        "Only to the first token",
+        "Only in the decoder"
+      ],
+      "answer": [1],
+      "explanation": "Same two-layer MLP for each position."
+    },
+    {
+      "question": "The original transformer encoder had how many stacked layers?",
+      "options": [
+        "2",
+        "6",
+        "12",
+        "96"
+      ],
+      "answer": [1],
+      "explanation": "6 encoder + 6 decoder layers; BERT-base has 12."
+    },
+    {
+      "question": "Which statements about transformers are true? (select all)",
+      "options": [
+        "They contain no recurrence",
+        "They use positional information",
+        "Self-attention cost is quadratic in length",
+        "They can only process images"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "Transformers are used for text, images (ViT), audio and more."
+    }
+  ]
+}

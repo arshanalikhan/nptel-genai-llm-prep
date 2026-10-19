@@ -1,0 +1,11 @@
+# Build output
+dist/
+tools/video/.build/
+
+# Python
+__pycache__/
+*.pyc
+
+# Local tooling and notes
+.claude/
+HANDOFF.md

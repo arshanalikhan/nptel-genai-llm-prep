@@ -1,0 +1,16 @@
+/* Videos: playback-speed bar and one card per week. */
+
+.vbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px }
+.vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 16px }
+.vcard { display: grid; gap: 10px; align-content: start; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); scroll-margin-top: calc(var(--navh, 0px) + 14px) }
+.vcard.focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft) }
+.vhead { display: flex; align-items: center; gap: 12px }
+.vhead > div { flex: 1; min-width: 0 }
+.vhead h3 { font-size: 1.08rem; line-height: 1.25 }
+.vnum { flex: none; font-family: var(--mono); font-weight: 600; font-size: .85rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 6px 8px }
+.vmeta { font-family: var(--mono); font-size: .74rem; color: var(--muted) }
+.vcard video { display: block; width: 100%; aspect-ratio: 16/9; border-radius: 10px; background: #0e161b }
+
+/* Placeholder for a week whose video isn't published yet */
+.vsoon { display: grid; place-items: center; gap: 6px; aspect-ratio: 16/9; border-radius: 10px; border: 1px dashed var(--line); background: var(--bg); color: var(--muted); font-family: var(--mono); font-size: .82rem; text-align: center }
+.vsoon svg { width: 26px; height: 26px }

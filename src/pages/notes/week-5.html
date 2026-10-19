@@ -1,0 +1,24 @@
+    <article class="week" id="w5">
+      <div class="rail"><span class="num">05</span><span class="lecs">LLMs</span></div>
+      <div class="body">
+        <h3>Introduction to Large Language Models</h3>
+        <figure class="diag"><p class="hint">Swipe sideways to see the whole diagram →</p><div class="scroll"><svg class="dg" viewBox="0 0 640 220" role="img" aria-label="Autoregressive generation: prompt tokens go into the decoder-only transformer, which outputs a probability for every vocabulary token; a decoding rule picks one, which is appended and fed back."><defs><marker id="g5m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<rect x="20" y="60" width="120" height="50" rx="8" class="b"/><text x="80" y="82" text-anchor="middle" class="t">Prompt</text><text x="80" y="99" text-anchor="middle" class="s">"The sky is"</text>
+<rect x="165" y="50" width="140" height="70" rx="8" class="h"/><text x="235" y="80" text-anchor="middle" class="t">Decoder-only</text><text x="235" y="98" text-anchor="middle" class="s">transformer (GPT)</text>
+<rect x="330" y="50" width="130" height="70" rx="8" class="b"/><text x="395" y="74" text-anchor="middle" class="k">blue 0.62</text><text x="395" y="90" text-anchor="middle" class="k">clear 0.21</text><text x="395" y="106" text-anchor="middle" class="k">falling 0.03 …</text>
+<rect x="485" y="50" width="135" height="70" rx="8" class="b"/><text x="552" y="76" text-anchor="middle" class="t">Decode</text><text x="552" y="94" text-anchor="middle" class="s">greedy · beam · temp</text><text x="552" y="108" text-anchor="middle" class="s">top-k · top-p</text>
+<line x1="140" y1="85" x2="163" y2="85" class="a" marker-end="url(#g5m)"/><line x1="305" y1="85" x2="328" y2="85" class="a" marker-end="url(#g5m)"/><line x1="460" y1="85" x2="483" y2="85" class="a" marker-end="url(#g5m)"/>
+<path d="M552 120 V160 H80 V112" fill="none" class="a" marker-end="url(#g5m)"/><text x="316" y="178" text-anchor="middle" class="m">append the chosen token and repeat until a stop token or max length</text>
+<text x="316" y="205" text-anchor="middle" class="s">The context window caps how many tokens (prompt + output) the model sees at once</text></svg></div><figcaption>An LLM is a next-token predictor trained on huge text corpora. Generation is a loop: score every token in the vocabulary, pick one with a decoding rule, append it, repeat.</figcaption></figure>
+        <ul class="notes">
+          <li><span class="tag">KEY</span><b>LLM</b> = a transformer language model with billions of parameters, pre-trained with self-supervision on web-scale text. Self-supervised: labels come from the text itself (next word, masked word), no human labelling.</li>
+          <li><span class="tag">KEY</span><b>Objectives:</b> causal LM / autoregressive (GPT, predict next token, best for generation); masked LM (BERT, predict hidden tokens using both sides, best for understanding); span corruption / seq2seq (T5).</li>
+          <li><b>Scale:</b> GPT-2 1.5B, GPT-3 175B. Scaling laws: loss falls predictably with more parameters, data and compute. Larger models show <b>emergent abilities</b> such as in-context learning.</li>
+          <li><span class="tag">KEY</span><b>In-context learning:</b> zero-shot (instruction only), one-shot, few-shot (examples in the prompt). No weights change. Examples use up the context window.</li>
+          <li><span class="tag">KEY</span><b>Prompt engineering:</b> clear instructions, role/persona, delimiters, output format, examples, <b>chain-of-thought</b> ("think step by step") for reasoning, self-consistency (sample several reasoning paths, take the majority), ReAct (reason + act with tools).</li>
+          <li><span class="tag">KEY</span><b>Decoding settings:</b> greedy (deterministic, can repeat itself), random sampling, temperature (low = focused, high = creative), top-k, top-p, max new tokens, stop sequences.</li>
+          <li><b>Limits:</b> hallucination (fluent but false), knowledge cutoff, fixed context window, bias from training data, cost and latency, weak arithmetic.</li>
+          <li><b>Model types:</b> base/foundation model (raw pre-trained), instruction-tuned / chat model, open-weight (Llama, Mistral) vs closed API (GPT-4, Claude, Gemini). Multimodal models take images as well as text.</li>
+        </ul>
+      </div>
+    </article>

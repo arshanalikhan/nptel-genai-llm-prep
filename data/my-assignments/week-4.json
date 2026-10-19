@@ -1,0 +1,116 @@
+{
+  "week": 4,
+  "source": "NPTEL Week 4 assessment, Jul–Oct 2026 run (accepted answers, reworded)",
+  "questions": [
+    {
+      "question": "Why has AI become so prominent in recent years?",
+      "options": [
+        "AI no longer needs training data",
+        "More data, more computing power and better algorithms",
+        "AI can fully replace human intelligence",
+        "AI runs only in research labs"
+      ],
+      "answer": [1],
+      "explanation": "Data + compute (GPUs) + algorithms (deep learning, transformers)."
+    },
+    {
+      "question": "What best separates AGI from narrow AI (ANI)?",
+      "options": [
+        "Generalising knowledge across very different domains",
+        "High efficiency at one task",
+        "Faster computation",
+        "Reliance on predefined rules"
+      ],
+      "answer": [0],
+      "explanation": "ANI excels at one task; AGI would transfer across domains."
+    },
+    {
+      "question": "Correct relationship between AI, ML and deep learning:",
+      "options": [
+        "DL ⊃ ML ⊃ AI",
+        "AI ⊃ ML ⊃ DL",
+        "ML ⊃ AI ⊃ DL",
+        "AI ⊃ DL ⊃ ML"
+      ],
+      "answer": [1],
+      "explanation": "Deep learning is a subset of ML, which is a subset of AI."
+    },
+    {
+      "question": "What fundamentally distinguishes generative from discriminative models?",
+      "options": [
+        "Generative models only classify",
+        "Discriminative models learn the data distribution",
+        "Generative models learn how the data is generated",
+        "Discriminative models create new samples"
+      ],
+      "answer": [2],
+      "explanation": "Generative: P(x) / P(x,y). Discriminative: P(y|x)."
+    },
+    {
+      "question": "Why is representation learning central to modern AI?",
+      "options": [
+        "It removes the need for optimisation",
+        "It extracts meaningful features automatically",
+        "It guarantees perfect predictions",
+        "It removes the need for labelled data"
+      ],
+      "answer": [1],
+      "explanation": "Networks learn features instead of hand-engineering them."
+    },
+    {
+      "question": "Which use case best shows the strength of generative AI?",
+      "options": [
+        "Sorting structured numeric records",
+        "Rule-based decisions",
+        "Creating human-like text, images or audio",
+        "Deterministic database queries"
+      ],
+      "answer": [2],
+      "explanation": "Creating new content is what generative models add."
+    },
+    {
+      "question": "A large language model is:",
+      "options": [
+        "A small domain-specific model",
+        "A symbolic language system",
+        "A neural model trained on massive text to learn language patterns",
+        "A supervised classifier with handcrafted features"
+      ],
+      "answer": [2],
+      "explanation": "Self-supervised on web-scale text."
+    },
+    {
+      "question": "Why do transformers scale better than RNN-based models?",
+      "options": [
+        "Attention allows parallel computation",
+        "They rely on recurrence for memory",
+        "They process tokens sequentially",
+        "They need no training data"
+      ],
+      "answer": [0],
+      "explanation": "No step-by-step dependency."
+    },
+    {
+      "question": "A key reason transformer models are trending:",
+      "options": [
+        "They need very little compute",
+        "They keep improving with larger datasets and more compute",
+        "They don't use attention",
+        "They only do translation"
+      ],
+      "answer": [1],
+      "explanation": "Scaling laws: performance grows with data, parameters and compute."
+    },
+    {
+      "question": "A defining property of GPT-style models:",
+      "options": [
+        "Encoder–decoder architecture",
+        "Bidirectional context at inference",
+        "Needs labelled sentence pairs",
+        "Decoder-only, autoregressive generation"
+      ],
+      "answer": [3],
+      "explanation": "Next-token prediction with causal masking."
+    }
+  ]
+}

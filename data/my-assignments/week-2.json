@@ -1,0 +1,116 @@
+{
+  "week": 2,
+  "source": "NPTEL Week 2 assessment, Jul–Oct 2026 run (accepted answers, reworded)",
+  "questions": [
+    {
+      "question": "Backpropagation Through Time (BPTT) is used for:",
+      "options": [
+        "Feature scaling",
+        "Training feed-forward networks",
+        "Propagating gradients back across the time steps of a sequence",
+        "Removing noise from text"
+      ],
+      "answer": [2],
+      "explanation": "The RNN is unrolled over time and gradients flow back through every step."
+    },
+    {
+      "question": "The hidden state of an RNN mainly represents:",
+      "options": [
+        "Only the final output",
+        "A memory of earlier time steps",
+        "The learning rate",
+        "The loss"
+      ],
+      "answer": [1],
+      "explanation": "h_t summarises everything seen so far."
+    },
+    {
+      "question": "RNNs are the natural choice for:",
+      "options": [
+        "Tabular rows that are independent",
+        "Image pixels in a grid",
+        "Sequential data where order matters",
+        "Randomly shuffled feature vectors"
+      ],
+      "answer": [2],
+      "explanation": "Text, speech, time series."
+    },
+    {
+      "question": "Which architecture was designed specifically for long-term dependencies?",
+      "options": [
+        "Simple RNN",
+        "Perceptron",
+        "LSTM",
+        "Naive Bayes"
+      ],
+      "answer": [2],
+      "explanation": "Gates + cell state counter vanishing gradients."
+    },
+    {
+      "question": "In an encoder–decoder translation model, the encoder:",
+      "options": [
+        "Writes the final translation",
+        "Compresses the input sequence into a context representation",
+        "Only creates word embeddings",
+        "Computes the BLEU score"
+      ],
+      "answer": [1],
+      "explanation": "The decoder then generates from that context."
+    },
+    {
+      "question": "Compared with greedy search, beam search improves:",
+      "options": [
+        "Quality of the generated sequence, by keeping several candidates",
+        "Memory use",
+        "Training speed",
+        "Vocabulary size"
+      ],
+      "answer": [0],
+      "explanation": "It explores multiple partial outputs instead of committing to one token at a time."
+    },
+    {
+      "question": "The BLEU score measures:",
+      "options": [
+        "Grammar correctness",
+        "How similar a machine translation is to reference translations",
+        "Training accuracy",
+        "Token frequency"
+      ],
+      "answer": [1],
+      "explanation": "n-gram precision overlap with references, plus a brevity penalty."
+    },
+    {
+      "question": "Why are word embeddings preferred over one-hot vectors?",
+      "options": [
+        "They capture semantic similarity between words",
+        "They need no training",
+        "They are easier to visualise",
+        "They remove stop words"
+      ],
+      "answer": [0],
+      "explanation": "One-hot vectors are all orthogonal; embeddings place similar words close."
+    },
+    {
+      "question": "Turning \"running\" into \"run\" is done by:",
+      "options": [
+        "Tokenization",
+        "Stemming / lemmatization",
+        "POS tagging",
+        "Parsing"
+      ],
+      "answer": [1],
+      "explanation": "Both reduce words to a base form."
+    },
+    {
+      "question": "In NLP, the \"vocabulary\" is:",
+      "options": [
+        "A grammar rule book",
+        "The set of all possible labels",
+        "The collection of unique tokens the model uses",
+        "A list of stop words only"
+      ],
+      "answer": [2],
+      "explanation": "Every token the model can represent."
+    }
+  ]
+}

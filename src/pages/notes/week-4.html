@@ -1,0 +1,44 @@
+    <article class="week" id="w4">
+      <div class="rail"><span class="num">04</span><span class="lecs">GenAI</span></div>
+      <div class="body">
+        <h3>Introduction to Generative AI</h3>
+        <figure class="diag"><p class="hint">Swipe sideways to see the whole diagram →</p><div class="scroll"><svg class="dg" viewBox="0 0 640 260" role="img" aria-label="Four generative model families: VAE encodes to a latent distribution and decodes, GAN pits generator against discriminator, diffusion adds then removes noise, CLIP matches images and text in one space."><defs><marker id="g4m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<text x="160" y="22" text-anchor="middle" class="t">VAE</text>
+<rect x="20" y="36" width="70" height="36" rx="8" class="b"/><text x="55" y="59" text-anchor="middle" class="k">x</text>
+<rect x="115" y="36" width="90" height="36" rx="8" class="h"/><text x="160" y="59" text-anchor="middle" class="k">z ~ N(μ, σ)</text>
+<rect x="230" y="36" width="70" height="36" rx="8" class="b"/><text x="265" y="59" text-anchor="middle" class="k">x̂</text>
+<line x1="90" y1="54" x2="113" y2="54" class="a" marker-end="url(#g4m)"/><line x1="205" y1="54" x2="228" y2="54" class="a" marker-end="url(#g4m)"/>
+<text x="160" y="92" text-anchor="middle" class="s">loss = reconstruction + KL</text>
+<text x="480" y="22" text-anchor="middle" class="t">GAN</text>
+<rect x="340" y="36" width="80" height="36" rx="8" class="b"/><text x="380" y="59" text-anchor="middle" class="k">noise z</text>
+<rect x="440" y="36" width="80" height="36" rx="8" class="h"/><text x="480" y="59" text-anchor="middle" class="k">Generator</text>
+<rect x="540" y="36" width="90" height="36" rx="8" class="h"/><text x="585" y="59" text-anchor="middle" class="k">Discriminator</text>
+<line x1="420" y1="54" x2="438" y2="54" class="a" marker-end="url(#g4m)"/><line x1="520" y1="54" x2="538" y2="54" class="a" marker-end="url(#g4m)"/>
+<text x="585" y="92" text-anchor="middle" class="s">real or fake?</text><text x="480" y="92" text-anchor="middle" class="s">min-max game</text>
+<text x="160" y="140" text-anchor="middle" class="t">Diffusion</text>
+<rect x="20" y="154" width="70" height="36" rx="8" class="b"/><text x="55" y="177" text-anchor="middle" class="k">image</text>
+<rect x="125" y="154" width="70" height="36" rx="8" class="b"/><text x="160" y="177" text-anchor="middle" class="k">noisier</text>
+<rect x="230" y="154" width="70" height="36" rx="8" class="h"/><text x="265" y="177" text-anchor="middle" class="k">pure noise</text>
+<line x1="90" y1="166" x2="123" y2="166" class="a" marker-end="url(#g4m)"/><line x1="195" y1="166" x2="228" y2="166" class="a" marker-end="url(#g4m)"/>
+<line x1="228" y1="182" x2="197" y2="182" class="a" marker-end="url(#g4m)"/><line x1="123" y1="182" x2="92" y2="182" class="a" marker-end="url(#g4m)"/>
+<text x="160" y="210" text-anchor="middle" class="s">forward: add noise · reverse: learned denoising</text>
+<text x="480" y="140" text-anchor="middle" class="t">CLIP</text>
+<rect x="350" y="154" width="100" height="36" rx="8" class="b"/><text x="400" y="177" text-anchor="middle" class="k">image encoder</text>
+<rect x="510" y="154" width="100" height="36" rx="8" class="b"/><text x="560" y="177" text-anchor="middle" class="k">text encoder</text>
+<rect x="430" y="210" width="100" height="36" rx="8" class="h"/><text x="480" y="233" text-anchor="middle" class="k">shared space</text>
+<line x1="400" y1="190" x2="450" y2="208" class="a" marker-end="url(#g4m)"/><line x1="560" y1="190" x2="510" y2="208" class="a" marker-end="url(#g4m)"/>
+<text x="20" y="240" text-anchor="start" class="m">Stable Diffusion = latent diffusion + text encoder</text></svg></div><figcaption>A generative model learns the data distribution so it can sample new data. VAEs learn a smooth latent space, GANs learn by competition, diffusion models learn to undo noise step by step, and CLIP learns which captions match which images (contrastive), which is how text steers image generation.</figcaption></figure>
+        <ul class="notes">
+          <li><span class="tag y">Your 2026</span><b>AI ⊃ ML ⊃ deep learning.</b> <b>Narrow AI (ANI)</b> does one task; <b>AGI</b> would generalise across domains. AI took off because of more data, more compute (GPUs) and better algorithms. <b>Representation learning</b> = the network learns useful features itself instead of hand-crafted ones.</li>
+          <li><span class="tag">KEY</span><b>Discriminative vs generative:</b> discriminative models learn P(y | x) and draw boundaries (logistic regression, classifiers); generative models learn P(x) or P(x, y) and can create new samples.</li>
+          <li><b>Types of GenAI output:</b> text (LLMs), images (DALL·E, Midjourney, Stable Diffusion), audio/music, video, code, synthetic data. Business uses: content, marketing copy, chatbots, summarising documents, code assistants, design.</li>
+          <li><span class="tag">KEY</span><b>Autoencoder:</b> encoder compresses to a bottleneck (latent code), decoder reconstructs; trained on reconstruction loss; used for dimensionality reduction, denoising, anomaly detection. A plain autoencoder's latent space has gaps, so sampling from it gives poor images.</li>
+          <li><span class="tag">KEY</span><b>VAE:</b> encoder outputs a mean and variance; z is sampled with the <b>reparameterisation trick</b> (z = μ + σ·ε) so gradients can flow; loss = reconstruction + KL divergence to a standard normal, which makes the latent space continuous so you can sample. Outputs tend to be blurry.</li>
+          <li><span class="tag">KEY</span><b>GAN</b> (Goodfellow, 2014): generator turns noise into fakes; discriminator classifies real vs fake; trained as a two-player minimax game. Problems: <b>mode collapse</b> (generator produces little variety), unstable training, vanishing gradients. Variants: DCGAN, conditional GAN, CycleGAN (unpaired image translation), StyleGAN.</li>
+          <li><span class="tag">KEY</span><b>Diffusion models:</b> a fixed forward process adds Gaussian noise over many steps; a network (usually a U-Net) learns to predict and remove the noise. Sharp, diverse images and stable training, but slow sampling (many steps). <b>Latent diffusion</b> (Stable Diffusion) works in a compressed latent space for speed.</li>
+          <li><span class="tag">KEY</span><b>CLIP</b> (OpenAI): trained contrastively on ~400M image–caption pairs to pull matching pairs together and push others apart; enables zero-shot image classification and guides text-to-image models.</li>
+          <li><b>Evaluating images:</b> FID (lower is better) and Inception Score (higher is better).</li>
+                  <li class="new"><span class="tag y">Your 2026</span>Your assignment asked: why AI took off (data, compute, algorithms); AGI generalises across domains, ANI does one task; AI ⊃ ML ⊃ DL; generative models learn how data is generated; representation learning extracts features automatically; transformers scale with data and compute.</li>
+        </ul>
+      </div>
+    </article>

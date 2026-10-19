@@ -1,0 +1,47 @@
+<section id="traps" class="page" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Read on exam morning</p>
+      <h2>Last-minute traps</h2>
+      <p>Each line is a statement a distractor is likely to flip. If you can say why each is right, you are ready.</p>
+    </div>
+    <ul class="traps">
+      <li><b>Stemming</b> chops suffixes (may not give a real word); <b>lemmatization</b> returns the dictionary form.</li>
+      <li>A word in <b>every</b> document has IDF = 0, so TF-IDF = 0.</li>
+      <li>One-hot vectors carry <b>no</b> similarity; all pairs are orthogonal.</li>
+      <li><b>CBOW</b>: context → word. <b>Skip-gram</b>: word → context (better for rare words).</li>
+      <li>Word2Vec/GloVe are <b>static</b>; BERT embeddings are <b>contextual</b>.</li>
+      <li>Vanishing gradients → <b>LSTM/GRU</b>; exploding gradients → <b>gradient clipping</b>.</li>
+      <li>LSTM has <b>3 gates</b> + a cell state; GRU has <b>2 gates</b> and no separate cell.</li>
+      <li>Teacher forcing feeds the <b>true</b> previous token during training.</li>
+      <li>Beam width 1 = <b>greedy</b>.</li>
+      <li>Scale by <b>√d_k</b>, not d_k. Attention weights sum to <b>1</b>.</li>
+      <li>Transformers need <b>positional encoding</b>; attention alone is order-blind.</li>
+      <li>Decoder self-attention is <b>masked</b>; cross-attention takes Q from the decoder, K/V from the encoder.</li>
+      <li>Self-attention is <b>O(n²)</b> in sequence length but runs in parallel.</li>
+      <li>BERT = <b>encoder</b>, masked LM, bidirectional. GPT = <b>decoder</b>, next token. T5 = encoder–decoder.</li>
+      <li>Discriminative learns <b>P(y|x)</b>; generative learns <b>P(x)</b> / P(x,y).</li>
+      <li>VAE loss = reconstruction + <b>KL</b>; the reparameterisation trick makes sampling differentiable.</li>
+      <li>GAN failure with little variety = <b>mode collapse</b>.</li>
+      <li>Diffusion: forward adds noise (<b>fixed</b>), reverse removes it (<b>learned</b>).</li>
+      <li>CLIP is <b>contrastive</b> image–text training, enabling zero-shot classification.</li>
+      <li>Few-shot prompting changes <b>no weights</b>.</li>
+      <li>Temperature <b>up</b> = more random; T → 0 = greedy.</li>
+      <li>Top-p picks a <b>variable</b> number of tokens; top-k a <b>fixed</b> number.</li>
+      <li>Full fine-tuning risks <b>catastrophic forgetting</b>; PEFT reduces it.</li>
+      <li>LoRA trainable params = <b>r(d + k)</b>; base weights are <b>frozen</b>; no added inference latency once merged.</li>
+      <li>Prompt tuning trains <b>soft prompt embeddings</b>, not the words you type.</li>
+      <li>RLHF order: <b>SFT → reward model → PPO</b>. The <b>KL penalty</b> prevents reward hacking.</li>
+      <li>DPO needs <b>no separate reward model</b>.</li>
+      <li>ROUGE → summarization (<b>recall</b>); BLEU → translation (<b>precision</b>).</li>
+      <li>Lower <b>perplexity</b> is better.</li>
+      <li>RAG adds knowledge <b>without retraining</b>; fine-tuning changes behaviour/style.</li>
+      <li>LangChain <b>chain</b> = fixed steps; <b>agent</b> = LLM chooses tools.</li>
+      <li>Quantisation = lower precision; distillation = <b>student learns from teacher</b>; pruning = remove weights.</li>
+      <li>Chinchilla: about <b>20 tokens per parameter</b>.</li>
+      <li>Hallucination is <b>reduced</b>, never eliminated, by RAG and low temperature.</li>
+      <li>Red-teaming = <b>deliberately attacking</b> the model to find failures.</li>
+      <li>EU AI Act is <b>risk-based</b>: unacceptable, high, limited, minimal.</li>
+    </ul>
+  </div>
+</section>

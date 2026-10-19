@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Exam prep for NPTEL Generative AI and Large Language Models (IIM Bangalore, imb26_mg164): week notes, diagrams, Hinglish videos, numericals, practice questions and timed mock papers.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f2f5f6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e161b" media="(prefers-color-scheme: dark)">
+<title>NPTEL GenAI &amp; LLMs Prep</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="{{stylesheet}}">
+<script>
+  // Apply a saved light/dark choice before the first paint, so the page never flashes the wrong theme.
+  try { var saved = localStorage.getItem("genprep-theme"); if (saved === "light" || saved === "dark") document.documentElement.setAttribute("data-theme", saved); } catch (e) {}
+</script>
+</head>
+<body>
+<!-- include: partials/navigation.html -->
+
+<main>
+<!-- include: pages/home.html -->
+<!-- include: pages/numericals.html -->
+<!-- include: pages/notes.html -->
+<!-- include: pages/videos.html -->
+<!-- include: pages/course-map.html -->
+<!-- include: pages/must-know.html -->
+<!-- include: pages/practice.html -->
+<!-- include: pages/mock-exams.html -->
+<!-- include: pages/traps.html -->
+<!-- include: pages/resources.html -->
+<div class="wrap"><nav class="pager" id="pager" aria-label="Previous and next page"></nav></div>
+</main>
+
+<!-- include: partials/footer.html -->
+
+<script>window.refreshIcons = function () { try { if (window.lucide) window.lucide.createIcons({ attrs: { "aria-hidden": "true" } }); } catch (e) {} };</script>
+<script async src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js" onload="refreshIcons()"></script>
+<script async src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+{{scripts}}
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* Home page: hero with countdown, exam facts ("ticket"), progress rings, study plan and page cards. */
+
+/* ---------- Hero ---------- */
+.hero { position: relative; overflow: hidden; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; align-items: center; padding: 30px; border: 1px solid var(--line); border-radius: 18px; background: radial-gradient(900px 280px at 100% 0%, var(--accent-soft), transparent 70%), var(--surface) }
+.hero-net { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none }
+.hero-main { display: grid; gap: 14px; min-width: 0 }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px }
+.today-focus { display: inline-flex; align-items: center; gap: 10px; justify-self: start; padding: 6px 12px 6px 6px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); font-size: .9rem }
+.today-focus .tf-l { font-family: var(--mono); font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: var(--accent); color: var(--on-accent) }
+
+/* Countdown card */
+.countdown-card { display: grid; justify-items: center; gap: 4px; padding: 20px 16px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); text-align: center }
+.cd-num { font-family: var(--display); font-size: 4.4rem; font-weight: 700; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums }
+.cd-l { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted) }
+.cd-d { font-weight: 600; font-size: .95rem }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) and (background: color-mix(in srgb, red 50%, transparent)) {
+  .countdown-card { background: color-mix(in srgb, var(--bg) 70%, transparent); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px) }
+}
+
+/* ---------- Exam facts strip ---------- */
+.ticket { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); border: 1px dashed var(--line); border-radius: 10px; background: var(--bg) }
+.ticket div { padding: 12px 16px; border-right: 1px dashed var(--line); min-width: 0 }
+.ticket div:last-child { border-right: 0 }
+.ticket dt { font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted) }
+.ticket dd { margin: 2px 0 0; font-weight: 600; font-variant-numeric: tabular-nums }
+.ticket dd small { display: block; font-weight: 400; color: var(--muted); font-size: .82rem }
+#countdown { color: var(--accent) }
+
+/* ---------- Progress cards with rings ---------- */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 12px }
+.stat { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 14px; align-content: start; padding: 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s }
+.stat .sx { display: grid; gap: 2px; min-width: 0 }
+.stat .l { font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted) }
+.stat .v { font-family: var(--display); font-size: 1.75rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums }
+.stat .s { font-size: .86rem; color: var(--muted) }
+.ring { position: relative; width: 64px; height: 64px; display: block }
+.ring svg:first-child { width: 64px; height: 64px; transform: rotate(-90deg) }
+.ring .rt { fill: none; stroke: var(--bg); stroke-width: 7 }
+.ring .rf { fill: none; stroke: var(--accent); stroke-width: 7; stroke-linecap: round; transition: stroke-dashoffset .9s cubic-bezier(.2, .7, .2, 1) }
+.ring .lucide, .ring > i { position: absolute; inset: 0; margin: auto; width: 22px; height: 22px; color: var(--accent) }
+.stat.good .rf { stroke: var(--ok) }
+.stat.good .ring .lucide { color: var(--ok) }
+
+/* ---------- Study plan ---------- */
+.days { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 14px }
+.day { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start }
+.day .when { font-family: var(--mono); font-size: .78rem; color: var(--accent); letter-spacing: .04em }
+.day ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px }
+.day.today { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft) }
+.todaybadge { margin-left: 8px; font-family: var(--mono); font-size: .66rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; background: var(--accent); color: var(--on-accent); vertical-align: 1px }
+
+/* ---------- "Pick a page" cards ---------- */
+.kit { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px }
+.kitcard { display: grid; gap: 6px; align-content: start; padding: 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s }
+.kitcard .ic { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: var(--accent-soft); color: var(--accent); margin-bottom: 4px }
+.kitcard .ic svg { width: 20px; height: 20px }
+.kitcard .k { font-family: var(--mono); font-size: .72rem; color: var(--accent); letter-spacing: .03em }
+.kitcard h3 { font-size: 1.2rem }
+.kitcard p { color: var(--muted); font-size: .92rem }
+.kitcard .go { font-family: var(--mono); font-size: .8rem; color: var(--accent); padding-top: 4px }
+
+@media (hover: hover) { .stat:hover, .kitcard:hover { border-color: var(--accent); transform: translateY(-2px) } }
+@media (prefers-reduced-motion: reduce) { .ring .rf { transition: none } }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding: 20px }
+  .countdown-card { grid-auto-flow: column; justify-content: start; justify-items: start; align-items: baseline; gap: 10px; padding: 12px 14px }
+  .cd-num { font-size: 2.6rem }
+}
+@media (max-width: 640px) {
+  .ticket { grid-template-columns: 1fr 1fr }
+  .ticket div { border-right: 0; border-bottom: 1px dashed var(--line); padding: 10px 12px }
+  .ticket div:nth-child(odd) { border-right: 1px dashed var(--line) }
+  .ticket div:nth-last-child(-n+2) { border-bottom: 0 }
+  .ticket dd { font-size: .92rem }
+  .day { padding: 16px }
+}

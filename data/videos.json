@@ -1,0 +1,44 @@
+[
+  {
+    "week": 1,
+    "file": "videos/week-01.mp4",
+    "poster": "videos/week-01.jpg",
+    "duration": "3:29"
+  },
+  {
+    "week": 2,
+    "file": "videos/week-02.mp4",
+    "poster": "videos/week-02.jpg",
+    "duration": "2:31"
+  },
+  {
+    "week": 3,
+    "file": "videos/week-03.mp4",
+    "poster": "videos/week-03.jpg",
+    "duration": "2:32"
+  },
+  {
+    "week": 4,
+    "file": "videos/week-04.mp4",
+    "poster": "videos/week-04.jpg",
+    "duration": "2:33"
+  },
+  {
+    "week": 5,
+    "file": "videos/week-05.mp4",
+    "poster": "videos/week-05.jpg",
+    "duration": "2:21"
+  },
+  {
+    "week": 6,
+    "file": "videos/week-06.mp4",
+    "poster": "videos/week-06.jpg",
+    "duration": "3:05"
+  },
+  {
+    "week": 7,
+    "file": "videos/week-07.mp4",
+    "poster": "videos/week-07.jpg",
+    "duration": "2:03"
+  }
+]

@@ -1,0 +1,275 @@
+{
+  "week": 1,
+  "title": "Natural Language Processing",
+  "questions": [
+    {
+      "question": "Converting \"studies\", \"studying\" and \"studied\" to \"studi\" by chopping suffixes is:",
+      "options": [
+        "Lemmatization",
+        "Stemming",
+        "Tokenization",
+        "POS tagging"
+      ],
+      "answer": [1],
+      "explanation": "Stemming applies crude suffix rules and may produce non-words. Lemmatization would give \"study\"."
+    },
+    {
+      "question": "Which step uses a vocabulary and part of speech to map \"better\" to \"good\"?",
+      "options": [
+        "Stemming",
+        "Stop-word removal",
+        "Lemmatization",
+        "n-gram extraction"
+      ],
+      "answer": [2],
+      "explanation": "Lemmatization returns the dictionary form (lemma) and needs the word's POS."
+    },
+    {
+      "question": "A bag-of-words representation loses:",
+      "options": [
+        "Word frequency",
+        "Word order",
+        "Vocabulary size",
+        "Document count"
+      ],
+      "answer": [1],
+      "explanation": "BoW keeps counts but discards order and grammar: \"dog bites man\" = \"man bites dog\"."
+    },
+    {
+      "question": "A corpus has 1,000 documents and a term occurs in 100 of them. Using log base 10, its IDF is:",
+      "options": [
+        "0.1",
+        "1",
+        "2",
+        "10"
+      ],
+      "answer": [1],
+      "explanation": "log₁₀(1000/100) = log₁₀ 10 = 1.",
+      "numerical": true
+    },
+    {
+      "question": "A term appears in every document of the corpus. Its TF-IDF weight in any document is:",
+      "options": [
+        "1",
+        "Equal to its TF",
+        "0",
+        "Undefined"
+      ],
+      "answer": [2],
+      "explanation": "IDF = log(N/N) = log 1 = 0, so TF × IDF = 0."
+    },
+    {
+      "question": "A term appears 3 times in a 60-word document; its IDF (log₁₀) is 2. TF-IDF = ?",
+      "options": [
+        "0.05",
+        "0.1",
+        "0.5",
+        "6"
+      ],
+      "answer": [1],
+      "explanation": "TF = 3/60 = 0.05; 0.05 × 2 = 0.1.",
+      "numerical": true
+    },
+    {
+      "question": "Why are one-hot vectors poor at capturing meaning?",
+      "options": [
+        "They are dense",
+        "Every pair of distinct words is equally dissimilar (orthogonal)",
+        "They need GPUs",
+        "They are only for images"
+      ],
+      "answer": [1],
+      "explanation": "The dot product of any two different one-hot vectors is 0, so \"cat\" is as far from \"dog\" as from \"car\"."
+    },
+    {
+      "question": "Word2Vec CBOW is trained to:",
+      "options": [
+        "Predict context words from the centre word",
+        "Predict the centre word from its context",
+        "Count global co-occurrences",
+        "Classify documents"
+      ],
+      "answer": [1],
+      "explanation": "CBOW: context → word. Skip-gram: word → context."
+    },
+    {
+      "question": "Which Word2Vec variant generally works better for rare words?",
+      "options": [
+        "CBOW",
+        "Skip-gram",
+        "One-hot",
+        "TF-IDF"
+      ],
+      "answer": [1],
+      "explanation": "Skip-gram makes several training examples per occurrence of a word, so rare words get more updates."
+    },
+    {
+      "question": "GloVe embeddings are built mainly from:",
+      "options": [
+        "Global word co-occurrence statistics",
+        "Character n-grams",
+        "Masked language modelling",
+        "Human-labelled synonyms"
+      ],
+      "answer": [0],
+      "explanation": "GloVe = Global Vectors: factorises a co-occurrence matrix. FastText uses character n-grams."
+    },
+    {
+      "question": "Which embedding can build a vector for a word never seen in training, using its character n-grams?",
+      "options": [
+        "Word2Vec",
+        "GloVe",
+        "FastText",
+        "One-hot"
+      ],
+      "answer": [2],
+      "explanation": "FastText represents a word as a bag of character n-grams, so new words get vectors from their pieces."
+    },
+    {
+      "question": "The word \"bank\" gets the same vector in \"river bank\" and \"bank loan\" with:",
+      "options": [
+        "BERT",
+        "Word2Vec",
+        "ELMo",
+        "GPT"
+      ],
+      "answer": [1],
+      "explanation": "Word2Vec, GloVe and FastText are static. BERT, ELMo and GPT give contextual embeddings."
+    },
+    {
+      "question": "Vectors a = (1, 0, 1) and b = (1, 1, 0). Cosine similarity = ?",
+      "options": [
+        "0",
+        "0.5",
+        "0.707",
+        "1"
+      ],
+      "answer": [1],
+      "explanation": "a·b = 1; ‖a‖ = ‖b‖ = √2; 1 / 2 = 0.5.",
+      "numerical": true
+    },
+    {
+      "question": "\"king − man + woman ≈ queen\" shows that embeddings:",
+      "options": [
+        "Are one-hot",
+        "Encode semantic relations as vector directions",
+        "Need TF-IDF",
+        "Ignore context completely"
+      ],
+      "answer": [1],
+      "explanation": "Consistent offsets between word vectors capture relations like gender."
+    },
+    {
+      "question": "Identifying \"Infosys\" as an ORGANISATION and \"Bengaluru\" as a LOCATION is:",
+      "options": [
+        "Sentiment analysis",
+        "Named entity recognition",
+        "Stemming",
+        "Topic modelling"
+      ],
+      "answer": [1],
+      "explanation": "NER labels spans with entity types (person, organisation, location, date…)."
+    },
+    {
+      "question": "Which are standard text-preprocessing steps? (select all)",
+      "options": [
+        "Tokenization",
+        "Lowercasing",
+        "Stop-word removal",
+        "Backpropagation"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "Backpropagation is how networks are trained, not preprocessing."
+    },
+    {
+      "question": "Subword tokenizers such as BPE and WordPiece mainly solve:",
+      "options": [
+        "Slow GPUs",
+        "Out-of-vocabulary words",
+        "Gradient explosion",
+        "Mode collapse"
+      ],
+      "answer": [1],
+      "explanation": "Unknown words are split into known subword pieces, e.g. \"unhappiness\" → un + happi + ness."
+    },
+    {
+      "question": "A bigram model of \"I love NLP\" considers which pairs?",
+      "options": [
+        "I, love, NLP",
+        "(I, love), (love, NLP)",
+        "(I, NLP)",
+        "(I, love, NLP)"
+      ],
+      "answer": [1],
+      "explanation": "Bigrams are consecutive 2-word sequences."
+    },
+    {
+      "question": "The distributional hypothesis states that:",
+      "options": [
+        "Words are independent",
+        "Words appearing in similar contexts have similar meanings",
+        "Frequent words matter most",
+        "Grammar determines meaning"
+      ],
+      "answer": [1],
+      "explanation": "\"You shall know a word by the company it keeps\" (Firth) — the basis of embeddings."
+    },
+    {
+      "question": "A spam classifier that predicts 100 emails as spam, of which 80 are truly spam, has precision:",
+      "options": [
+        "0.2",
+        "0.8",
+        "1.25",
+        "Cannot tell"
+      ],
+      "answer": [1],
+      "explanation": "Precision = TP / predicted positive = 80/100.",
+      "numerical": true
+    },
+    {
+      "question": "Naive Bayes for text classification assumes that:",
+      "options": [
+        "Words are conditionally independent given the class",
+        "Word order matters",
+        "Documents are images",
+        "Embeddings are contextual"
+      ],
+      "answer": [0],
+      "explanation": "The \"naive\" independence assumption makes it fast and a strong baseline."
+    },
+    {
+      "question": "Vocabulary size is 50,000. A one-hot vector for a word has length:",
+      "options": [
+        "1",
+        "300",
+        "50,000",
+        "Depends on the sentence"
+      ],
+      "answer": [2],
+      "explanation": "One position per vocabulary word.",
+      "numerical": true
+    },
+    {
+      "question": "Which is an example of natural language generation (NLG) rather than understanding?",
+      "options": [
+        "Sentiment classification",
+        "Writing a product description from bullet points",
+        "NER",
+        "Spam detection"
+      ],
+      "answer": [1],
+      "explanation": "NLG produces text; the others classify or label it."
+    },
+    {
+      "question": "Negative sampling in Word2Vec is used to:",
+      "options": [
+        "Remove stop words",
+        "Make training efficient by updating only a few wrong words per step",
+        "Create one-hot vectors",
+        "Generate images"
+      ],
+      "answer": [1],
+      "explanation": "Instead of a softmax over the whole vocabulary, a few random negative words are contrasted with the true one."
+    }
+  ]
+}

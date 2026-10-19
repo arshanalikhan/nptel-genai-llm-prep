@@ -1,0 +1,89 @@
+<section id="formulas" class="page" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Formula sheet</p>
+      <h2>Numericals worth easy marks</h2>
+      <p>Management-school NPTEL papers mix concept MCQs with short calculations. These are the formulas that can be asked from this syllabus; the exam gives an on-screen calculator.</p>
+    </div>
+    <div class="fgrid">
+      <div class="fcard">
+        <h3>Text representation (W1)</h3>
+<pre class="f">TF(t,d)  = count of t in d / words in d
+IDF(t)   = log( N / df(t) )
+TF-IDF   = TF × IDF
+cos(a,b) = a·b / (‖a‖ ‖b‖)</pre>
+        <p>A word in every document has IDF = log 1 = 0, so its TF-IDF is 0. Cosine similarity ignores length; 1 = same direction, 0 = orthogonal.</p>
+        <p>Vocabulary of V words → one-hot vector of length V; embeddings are dense, length d ≪ V.</p>
+      </div>
+      <div class="fcard">
+        <h3>RNN size (W2)</h3>
+<pre class="f">h_t = tanh(W_hh h_(t−1) + W_xh x_t + b)
+params(simple RNN) = h·h + h·x + h
+LSTM  = 4 × (h·h + h·x + h)
+GRU   = 3 × (h·h + h·x + h)</pre>
+        <p>LSTM has 4 gate blocks (forget, input, candidate, output); GRU has 3 (update, reset, candidate). Keras adds the Dense output layer separately.</p>
+      </div>
+      <div class="fcard">
+        <h3>Attention (W3)</h3>
+<pre class="f">Attention(Q,K,V) = softmax( QKᵀ / √d_k ) V
+multi-head: d_k = d_model / h
+self-attention cost ∝ n² · d
+softmax(z)_i = e^(z_i) / Σ e^(z_j)</pre>
+        <p>Dividing by √d_k keeps dot products from growing with dimension, which would push softmax into tiny gradients. Original transformer: d_model 512, 8 heads → d_k = 64.</p>
+      </div>
+      <div class="fcard">
+        <h3>Decoding (W5)</h3>
+<pre class="f">p_i = e^(z_i/T) / Σ e^(z_j/T)
+T → 0 : greedy (argmax)   T = 1 : unchanged
+T &gt; 1 : flatter, more random
+perplexity = exp( −(1/N) Σ log p(w_i) )</pre>
+        <p>Top-k keeps the k most likely tokens; top-p (nucleus) keeps the smallest set whose probabilities add to ≥ p. Lower perplexity = better language model.</p>
+      </div>
+      <div class="fcard">
+        <h3>Fine-tuning size (W6)</h3>
+<pre class="f">LoRA on W (d × k), rank r:
+  trainable = r × (d + k)
+full update = d × k
+memory (weights only) = params × bytes
+  fp32 4 B · fp16/bf16 2 B · int8 1 B · int4 0.5 B
+full training ≈ 16–20 B per parameter</pre>
+        <p>1B params in fp32 = 4 GB just to load; training with Adam needs about 4–5× that (gradients, optimizer states, activations). Chinchilla: compute-optimal training uses ~20 tokens per parameter.</p>
+      </div>
+      <div class="fcard">
+        <h3>Evaluation (W6)</h3>
+<pre class="f">ROUGE-1 recall    = overlap unigrams / unigrams in reference
+ROUGE-1 precision = overlap unigrams / unigrams in output
+F1 = 2PR / (P + R)
+BLEU = BP × exp( Σ wₙ log pₙ )  (precision, n = 1..4)</pre>
+        <p>ROUGE → summarization (recall oriented). BLEU → translation (precision oriented, with a brevity penalty). Both only count word overlap, not meaning.</p>
+      </div>
+    </div>
+
+    <div class="sec-head wx-head">
+      <p class="eyebrow">Worked examples</p>
+      <h2>Step-by-step numericals</h2>
+      <p>Solve each on paper first, then open the working.</p>
+      <div><button class="btn" id="wxAll" type="button">Open all workings</button></div>
+    </div>
+    <div class="wgroup"><p class="eyebrow">Text and vectors</p><div class="wgrid">
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">TF-IDF</span></div><h4>TF-IDF of one word</h4><p class="wq">A corpus has 1,000 documents; "transformer" appears in 10 of them. In a 100-word document it appears 5 times. Using log base 10, what is its TF-IDF in that document?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>TF</b><span class="calc">5 ÷ 100 = 0.05</span></div></li><li><div><b>IDF</b><span class="calc">log₁₀(1000 ÷ 10) = log₁₀ 100 = 2</span></div></li><li><div><b>Multiply</b><span class="calc">0.05 × 2 = 0.1</span></div></li></ol><p class="wans">TF-IDF = 0.1</p><p class="wtrap"><b>Trap:</b> a word like "the" in all 1,000 docs gets IDF = log 1 = 0, however often it appears.</p></details></article>
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">Cosine</span></div><h4>Cosine similarity</h4><p class="wq">a = (1, 2, 2) and b = (2, 0, 1). What is cos(a, b)?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>Dot product</b><span class="calc">1·2 + 2·0 + 2·1 = 4</span></div></li><li><div><b>Lengths</b><span class="calc">‖a‖ = √(1+4+4) = 3
+‖b‖ = √(4+0+1) = √5 ≈ 2.236</span></div></li><li><div><b>Divide</b><span class="calc">4 ÷ (3 × 2.236) = 4 ÷ 6.708 ≈ 0.596</span></div></li></ol><p class="wans">cos ≈ 0.60</p></details></article>
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">RNN</span></div><h4>Parameters in recurrent layers</h4><p class="wq">Input size x = 10, hidden size h = 20. How many parameters in a SimpleRNN, an LSTM and a GRU layer (with biases, one bias vector per gate)?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>One block</b> h·h + h·x + h<span class="calc">400 + 200 + 20 = 620</span></div></li><li><div><b>SimpleRNN</b><span class="calc">1 × 620 = 620</span></div></li><li><div><b>LSTM</b> 4 gates<span class="calc">4 × 620 = 2,480</span></div></li><li><div><b>GRU</b> 3 gates<span class="calc">3 × 620 = 1,860</span></div></li></ol><p class="wans">620 · 2,480 · 1,860</p><p class="wtrap"><b>Trap:</b> Keras's default GRU (reset_after=True) uses two bias vectors per gate, giving 1,920. Read the question's assumption.</p></details></article>
+    </div></div>
+    <div class="wgroup"><p class="eyebrow">Attention and decoding</p><div class="wgrid">
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">Attention</span></div><h4>One attention step</h4><p class="wq">d_k = 4. A query q scores two keys with raw dot products q·k₁ = 4 and q·k₂ = 0. Values v₁ = 10, v₂ = 2. What is the attention output?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>Scale</b> divide by √d_k = 2<span class="calc">scores = 2, 0</span></div></li><li><div><b>Softmax</b><span class="calc">e² = 7.389, e⁰ = 1
+weights = 7.389/8.389, 1/8.389 = 0.881, 0.119</span></div></li><li><div><b>Weighted sum of values</b><span class="calc">0.881 × 10 + 0.119 × 2 = 8.81 + 0.24 = 9.05</span></div></li></ol><p class="wans">≈ 9.05</p><p class="wtrap"><b>Trap:</b> skipping the √d_k scaling gives weights 0.982 / 0.018 and output ≈ 9.86.</p></details></article>
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">Multi-head</span></div><h4>Head size and projection weights</h4><p class="wq">d_model = 768 with 12 heads. What is d_k, and how many weights are in the Q, K, V and output projections of one attention layer (ignore biases)?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>Head size</b><span class="calc">768 ÷ 12 = 64</span></div></li><li><div><b>Each projection</b> d_model × d_model<span class="calc">768 × 768 = 589,824</span></div></li><li><div><b>Four of them</b> W_Q, W_K, W_V, W_O<span class="calc">4 × 589,824 = 2,359,296 ≈ 2.36 M</span></div></li></ol><p class="wans">d_k = 64; ≈ 2.36 M weights (4d²).</p><p class="wtrap"><b>Trap:</b> the feed-forward block (d → 4d → d) adds 8d², so a whole layer is ≈ 12d².</p></details></article>
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">Temperature</span></div><h4>Softmax with temperature</h4><p class="wq">Logits for two tokens are 2 and 0. What is P(first token) at T = 1 and at T = 2?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>T = 1</b><span class="calc">e² / (e² + 1) = 7.389 / 8.389 = 0.881</span></div></li><li><div><b>T = 2</b> divide logits by 2 → 1 and 0<span class="calc">e¹ / (e¹ + 1) = 2.718 / 3.718 = 0.731</span></div></li></ol><p class="wans">0.88 at T = 1, 0.73 at T = 2: higher temperature flattens the distribution.</p></details></article>
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">Top-p</span></div><h4>Which tokens survive nucleus sampling?</h4><p class="wq">Next-token probabilities: cake 0.40, bread 0.25, pie 0.15, soup 0.10, rock 0.06, car 0.04. With top-p = 0.8, which tokens can be sampled? With top-k = 2?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>Sort and accumulate</b><span class="calc">0.40 → 0.65 → 0.80 ✓ stop</span></div></li><li><div><b>Top-p set</b><span class="calc">{cake, bread, pie}, renormalised ÷ 0.80</span></div></li><li><div><b>Top-k = 2</b><span class="calc">{cake, bread}</span></div></li></ol><p class="wans">Top-p 0.8 → cake, bread, pie. Top-k 2 → cake, bread.</p></details></article>
+    </div></div>
+    <div class="wgroup"><p class="eyebrow">Fine-tuning and evaluation</p><div class="wgrid">
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">LoRA</span></div><h4>LoRA trainable parameters</h4><p class="wq">A weight matrix is 512 × 64 (as in the original transformer's per-head projection). LoRA uses rank r = 8. How many trainable parameters, and what fraction of the full matrix?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>Full matrix</b><span class="calc">512 × 64 = 32,768</span></div></li><li><div><b>LoRA matrices</b> A is r × k, B is d × r<span class="calc">A: 8 × 64 = 512
+B: 512 × 8 = 4,096
+total = 4,608</span></div></li><li><div><b>Fraction</b><span class="calc">4,608 ÷ 32,768 ≈ 14%  (86% fewer)</span></div></li></ol><p class="wans">4,608 trainable parameters, about 14% of the original.</p><p class="wtrap"><b>Trap:</b> the base weights are frozen; after training you can merge W + BA, so inference latency doesn't change.</p></details></article>
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">Memory</span></div><h4>GPU memory for a model</h4><p class="wq">A 7-billion-parameter model. How much memory do the weights need in fp32, fp16 and int4? Roughly how much for full fine-tuning at ~20 bytes/parameter?</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>fp32</b><span class="calc">7e9 × 4 B = 28 GB</span></div></li><li><div><b>fp16 / bf16</b><span class="calc">7e9 × 2 B = 14 GB</span></div></li><li><div><b>int4</b><span class="calc">7e9 × 0.5 B = 3.5 GB</span></div></li><li><div><b>Full training</b> weights + gradients + Adam states + activations<span class="calc">7e9 × 20 B = 140 GB</span></div></li></ol><p class="wans">28 GB · 14 GB · 3.5 GB · ≈ 140 GB to train, which is why PEFT and quantization matter.</p></details></article>
+      <article class="wx"><div class="wmeta"><span class="tag p">Practice</span><span class="eyebrow">ROUGE</span></div><h4>ROUGE-1 recall, precision, F1</h4><p class="wq">Reference: "it is cold outside" (4 words). Output: "it is very cold outside" (5 words). Find ROUGE-1 recall, precision and F1.</p><details class="wsol"><summary>Show the working</summary><ol class="wsteps"><li><div><b>Overlapping unigrams</b><span class="calc">it, is, cold, outside = 4</span></div></li><li><div><b>Recall</b> ÷ reference length<span class="calc">4 ÷ 4 = 1.0</span></div></li><li><div><b>Precision</b> ÷ output length<span class="calc">4 ÷ 5 = 0.8</span></div></li><li><div><b>F1</b><span class="calc">2 × 1.0 × 0.8 ÷ 1.8 = 0.889</span></div></li></ol><p class="wans">R = 1.0, P = 0.8, F1 ≈ 0.89</p><p class="wtrap"><b>Trap:</b> "it is not cold outside" gets the same scores although it means the opposite.</p></details></article>
+    </div></div>
+  </div>
+</section>

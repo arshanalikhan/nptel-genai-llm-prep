@@ -1,0 +1,272 @@
+{
+  "week": 2,
+  "title": "Sequential data, RNNs & encoder–decoder",
+  "questions": [
+    {
+      "question": "What makes an RNN suitable for sequences?",
+      "options": [
+        "It has no weights",
+        "It carries a hidden state and shares weights across time steps",
+        "It processes all tokens at once",
+        "It uses convolution only"
+      ],
+      "answer": [1],
+      "explanation": "The hidden state is the memory; shared weights handle any length."
+    },
+    {
+      "question": "Sentiment classification of a review (sequence in, one label out) is which RNN pattern?",
+      "options": [
+        "One-to-many",
+        "Many-to-one",
+        "One-to-one",
+        "Many-to-many (aligned)"
+      ],
+      "answer": [1],
+      "explanation": "Many inputs, one output."
+    },
+    {
+      "question": "Image captioning (one image in, a sentence out) is:",
+      "options": [
+        "One-to-many",
+        "Many-to-one",
+        "Many-to-many aligned",
+        "One-to-one"
+      ],
+      "answer": [0],
+      "explanation": "One input, a sequence out."
+    },
+    {
+      "question": "RNNs are trained with:",
+      "options": [
+        "K-means",
+        "Backpropagation through time",
+        "Gibbs sampling",
+        "Contrastive loss"
+      ],
+      "answer": [1],
+      "explanation": "BPTT unrolls the network over time steps and backpropagates through them."
+    },
+    {
+      "question": "Why do simple RNNs struggle with long sentences?",
+      "options": [
+        "Too many parameters",
+        "Vanishing gradients over many time steps",
+        "They can't use embeddings",
+        "They need labels for every word"
+      ],
+      "answer": [1],
+      "explanation": "Repeated multiplication shrinks gradients, so early inputs barely affect learning."
+    },
+    {
+      "question": "The standard fix for exploding gradients is:",
+      "options": [
+        "Dropout",
+        "Gradient clipping",
+        "Stop-word removal",
+        "Larger vocabulary"
+      ],
+      "answer": [1],
+      "explanation": "Clip the gradient norm to a threshold."
+    },
+    {
+      "question": "Which gates does an LSTM have? (select all)",
+      "options": [
+        "Forget gate",
+        "Input gate",
+        "Output gate",
+        "Reset gate"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "The reset gate belongs to the GRU."
+    },
+    {
+      "question": "A GRU differs from an LSTM in that it:",
+      "options": [
+        "Has more gates",
+        "Has no separate cell state and fewer parameters",
+        "Cannot handle sequences",
+        "Uses attention"
+      ],
+      "answer": [1],
+      "explanation": "GRU: update + reset gates, merges cell and hidden state."
+    },
+    {
+      "question": "The LSTM's cell state helps long-range memory because:",
+      "options": [
+        "It is updated additively, letting gradients flow",
+        "It is reset every step",
+        "It stores one-hot vectors",
+        "It removes the need for training"
+      ],
+      "answer": [0],
+      "explanation": "The additive path (gated by the forget gate) avoids repeated squashing."
+    },
+    {
+      "question": "A SimpleRNN layer has input size 8 and 16 hidden units. Parameters (with bias)?",
+      "options": [
+        "144",
+        "400",
+        "384",
+        "272"
+      ],
+      "answer": [1],
+      "explanation": "16·16 + 16·8 + 16 = 256 + 128 + 16 = 400.",
+      "numerical": true
+    },
+    {
+      "question": "Same input 8 and hidden 16, but an LSTM. Parameters (one bias per gate)?",
+      "options": [
+        "400",
+        "1,200",
+        "1,600",
+        "2,000"
+      ],
+      "answer": [2],
+      "explanation": "4 × 400 = 1,600.",
+      "numerical": true
+    },
+    {
+      "question": "In a seq2seq translation model, the encoder's job is to:",
+      "options": [
+        "Generate the translation",
+        "Compress the source sentence into a context representation",
+        "Compute BLEU",
+        "Tokenize text"
+      ],
+      "answer": [1],
+      "explanation": "The decoder then generates from that context."
+    },
+    {
+      "question": "The main weakness of the basic encoder–decoder (no attention) is:",
+      "options": [
+        "It can't translate",
+        "The fixed-length context vector is a bottleneck for long inputs",
+        "It needs images",
+        "It is bidirectional"
+      ],
+      "answer": [1],
+      "explanation": "All information must fit one vector; attention fixes this."
+    },
+    {
+      "question": "Teacher forcing means during training the decoder receives:",
+      "options": [
+        "Its own previous prediction",
+        "The ground-truth previous token",
+        "Random noise",
+        "The encoder input"
+      ],
+      "answer": [1],
+      "explanation": "Speeds training; the mismatch with inference is called exposure bias."
+    },
+    {
+      "question": "Beam search with beam width 1 is the same as:",
+      "options": [
+        "Random sampling",
+        "Greedy decoding",
+        "Top-p sampling",
+        "Teacher forcing"
+      ],
+      "answer": [1],
+      "explanation": "Keeping only the single best path each step is greedy."
+    },
+    {
+      "question": "Why is a bidirectional RNN unsuitable for generating text left to right?",
+      "options": [
+        "It is too small",
+        "It needs future tokens, which don't exist yet during generation",
+        "It has no hidden state",
+        "It cannot use GPUs"
+      ],
+      "answer": [1],
+      "explanation": "The backward pass reads the future — fine for tagging, not for generation."
+    },
+    {
+      "question": "Which tasks are naturally sequential data problems? (select all)",
+      "options": [
+        "Speech recognition",
+        "Stock price forecasting",
+        "Machine translation",
+        "Classifying a single tabular row"
+      ],
+      "answer": [0, 1, 2],
+      "explanation": "A single tabular row has no order dimension."
+    },
+    {
+      "question": "Why can't an RNN be fully parallelised over the tokens of a sentence during training?",
+      "options": [
+        "Each hidden state depends on the previous one",
+        "It has no weights",
+        "It uses attention",
+        "Its vocabulary is too large"
+      ],
+      "answer": [0],
+      "explanation": "h_t needs h_(t−1). Transformers remove this dependency."
+    },
+    {
+      "question": "Part-of-speech tagging every word of a sentence is which RNN pattern?",
+      "options": [
+        "Many-to-one",
+        "One-to-many",
+        "Many-to-many (aligned)",
+        "One-to-one"
+      ],
+      "answer": [2],
+      "explanation": "One label per input token."
+    },
+    {
+      "question": "An activation commonly used for the RNN hidden state is:",
+      "options": [
+        "ReLU only",
+        "tanh",
+        "Softmax",
+        "Linear"
+      ],
+      "answer": [1],
+      "explanation": "tanh keeps values in (−1, 1); gates use sigmoid."
+    },
+    {
+      "question": "LSTM gates use the sigmoid function because:",
+      "options": [
+        "It outputs values between 0 and 1, acting as a soft on/off switch",
+        "It is linear",
+        "It sums to 1",
+        "It outputs negative values"
+      ],
+      "answer": [0],
+      "explanation": "0 = block, 1 = pass through."
+    },
+    {
+      "question": "Encoder–decoder models allow input and output sequences to:",
+      "options": [
+        "Have different lengths",
+        "Only be the same length",
+        "Only be images",
+        "Only be numbers"
+      ],
+      "answer": [0],
+      "explanation": "e.g. a 3-word English sentence → 5-word Hindi sentence."
+    },
+    {
+      "question": "Time-series forecasting of the next day's demand from the past 30 days is a natural fit for:",
+      "options": [
+        "An RNN/LSTM",
+        "K-means",
+        "A GAN discriminator alone",
+        "TF-IDF"
+      ],
+      "answer": [0],
+      "explanation": "Sequential input, predict next value."
+    },
+    {
+      "question": "Beam search improves on greedy decoding by:",
+      "options": [
+        "Keeping several partial hypotheses and choosing the best overall sequence",
+        "Using a larger vocabulary",
+        "Training faster",
+        "Removing the decoder"
+      ],
+      "answer": [0],
+      "explanation": "A locally best word can lead to a worse sentence; beams keep alternatives."
+    }
+  ]
+}

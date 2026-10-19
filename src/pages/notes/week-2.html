@@ -1,0 +1,32 @@
+    <article class="week" id="w2">
+      <div class="rail"><span class="num">02</span><span class="lecs">Sequences</span></div>
+      <div class="body">
+        <h3>Sequential data, RNNs, encoder–decoder</h3>
+        <figure class="diag"><p class="hint">Swipe sideways to see the whole diagram →</p><div class="scroll"><svg class="dg" viewBox="0 0 640 220" role="img" aria-label="Encoder-decoder: encoder RNN reads the input sequence into one context vector, decoder RNN generates the output sequence from it."><defs><marker id="g2m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<text x="140" y="22" text-anchor="middle" class="t">Encoder</text><text x="490" y="22" text-anchor="middle" class="t">Decoder</text>
+<rect x="30" y="70" width="60" height="44" rx="8" class="b"/><rect x="110" y="70" width="60" height="44" rx="8" class="b"/><rect x="190" y="70" width="60" height="44" rx="8" class="b"/>
+<text x="60" y="97" text-anchor="middle" class="k">h₁</text><text x="140" y="97" text-anchor="middle" class="k">h₂</text><text x="220" y="97" text-anchor="middle" class="k">h₃</text>
+<text x="60" y="150" text-anchor="middle" class="s">I</text><text x="140" y="150" text-anchor="middle" class="s">love</text><text x="220" y="150" text-anchor="middle" class="s">tea</text>
+<line x1="60" y1="138" x2="60" y2="116" class="a" marker-end="url(#g2m)"/><line x1="140" y1="138" x2="140" y2="116" class="a" marker-end="url(#g2m)"/><line x1="220" y1="138" x2="220" y2="116" class="a" marker-end="url(#g2m)"/>
+<line x1="90" y1="92" x2="108" y2="92" class="a" marker-end="url(#g2m)"/><line x1="170" y1="92" x2="188" y2="92" class="a" marker-end="url(#g2m)"/>
+<rect x="275" y="66" width="90" height="52" rx="8" class="h"/><text x="320" y="90" text-anchor="middle" class="t">context</text><text x="320" y="106" text-anchor="middle" class="s">one fixed vector</text>
+<line x1="250" y1="92" x2="273" y2="92" class="a" marker-end="url(#g2m)"/><line x1="365" y1="92" x2="388" y2="92" class="a" marker-end="url(#g2m)"/>
+<rect x="390" y="70" width="60" height="44" rx="8" class="b"/><rect x="470" y="70" width="60" height="44" rx="8" class="b"/><rect x="550" y="70" width="60" height="44" rx="8" class="b"/>
+<line x1="450" y1="92" x2="468" y2="92" class="a" marker-end="url(#g2m)"/><line x1="530" y1="92" x2="548" y2="92" class="a" marker-end="url(#g2m)"/>
+<text x="420" y="50" text-anchor="middle" class="s">मुझे</text><text x="500" y="50" text-anchor="middle" class="s">चाय</text><text x="580" y="50" text-anchor="middle" class="s">पसंद है</text>
+<line x1="420" y1="68" x2="420" y2="56" class="a" marker-end="url(#g2m)"/><line x1="500" y1="68" x2="500" y2="56" class="a" marker-end="url(#g2m)"/><line x1="580" y1="68" x2="580" y2="56" class="a" marker-end="url(#g2m)"/>
+<text x="320" y="185" text-anchor="middle" class="m">Bottleneck: the whole sentence must squeeze into one vector, so long inputs lose detail</text><text x="320" y="205" text-anchor="middle" class="s">→ attention (week 3) lets the decoder look at every hᵢ</text></svg></div><figcaption>The encoder reads the input one step at a time and hands its final hidden state to the decoder, which writes the output one token at a time, feeding each output back in. Input and output lengths can differ.</figcaption></figure>
+        <ul class="notes">
+          <li><span class="tag">KEY</span><b>Sequential data:</b> order matters (text, speech, time series, stock prices). Feed-forward nets take fixed-size input and have no memory; RNNs share the same weights across time steps and carry a hidden state.</li>
+          <li><b>RNN shapes:</b> one-to-many (image captioning), many-to-one (sentiment), many-to-many aligned (POS tagging), many-to-many unaligned = seq2seq (translation).</li>
+          <li><span class="tag">KEY</span><b>Training:</b> backpropagation through time (BPTT). Repeated multiplication by the same weights causes <b>vanishing gradients</b> (can't learn long-range dependencies) or <b>exploding gradients</b> (fixed by gradient clipping).</li>
+          <li><span class="tag">KEY</span><b>LSTM:</b> a cell state plus forget, input and output gates; the additive cell update lets gradients flow, so it remembers long-range context. <b>GRU:</b> update and reset gates, no separate cell state, fewer parameters, often similar accuracy.</li>
+          <li><b>Bidirectional RNN:</b> reads left-to-right and right-to-left; useful when the whole input is available (tagging), not for generating the next word.</li>
+          <li><span class="tag">KEY</span><b>Encoder–decoder (seq2seq):</b> encoder compresses the input into a context vector; decoder generates the output. Weakness: fixed-length context bottleneck, worse on long sentences.</li>
+          <li><b>Teacher forcing:</b> in training the decoder gets the true previous token rather than its own prediction (faster, but train/test mismatch called exposure bias).</li>
+          <li><b>Decoding:</b> greedy picks the best token each step; <b>beam search</b> keeps the top-B partial sequences (B = 1 is greedy).</li>
+          <li>RNNs process tokens one at a time, so training can't be parallelised across the sequence; transformers remove that limit.</li>
+                  <li class="new"><span class="tag y">Your 2026</span>Your assignment asked: BPTT, hidden state = memory, LSTM for long-term dependencies, encoder → context representation, beam search improves quality, BLEU vs reference translations, embeddings beat one-hot, vocabulary = set of unique tokens.</li>
+        </ul>
+      </div>
+    </article>
